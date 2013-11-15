@@ -12,7 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/dist/css/form.css" rel="stylesheet">
     <link href="/dist/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +36,7 @@
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Voluntários <b class="caret"></b></a>
 		      <ul class="dropdown-menu">
 		        <li><a href="/voluntario/cadastrar.php">Cadastrar</a></li>
-		        <li><a href="#">Visualizar</a></li>
+		        <li><a href="/voluntario/visualizar.php">Visualizar</a></li>
 		      </ul>
 		    </li>
 		    

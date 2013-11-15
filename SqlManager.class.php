@@ -72,6 +72,7 @@
 			try
 			{
 				$affectedLines = $this->conn->exec($query);
+				if($affectedLines == 0) var_dump($this->conn->errorInfo());
 				return $affectedLines;
 			}
 			catch ( Exception $e)

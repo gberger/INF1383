@@ -5,3 +5,33 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
+
+.jumbotron-wrapper {
+	text-align: center;
+	padding: 0px 20px;
+}
+
+.jumbotron {
+	display: inline-block;
+	width: 80%;
+}
+
+.jumbotron-wrapper > * {
+	text-align: left;
+}
+
+.jumbotron-wrapper > .title {
+	padding-left: 10%;
+}
+
+.form-horizontal .control-label {
+	padding-top: 15px;
+}
+
+.form-horizontal .control-group {
+	margin-bottom: 10px;
+}
+
+.btn-submit {
+	float: right;
+}

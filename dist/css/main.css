@@ -35,3 +35,24 @@ body {
 .btn-submit {
 	float: right;
 }
+
+.volunteers-table th,td {
+	/*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+	margin-bottom: 2px;
+	margin-top: 0px;
+	font-size: 16px;
+	line-height: 25px;
+	color: #333333;
+	border: 0;
+}
+
+.volunteers-table th {
+	font-weight: 500;
+	padding: 0px 10px;
+	border-bottom: 1px solid #a5a5a5;
+}
+
+.volunteers-table td {
+	padding: 8px 10px;
+	border-bottom: 1px solid #c5c5c5;
+}

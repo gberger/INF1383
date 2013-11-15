@@ -64,6 +64,17 @@
 			return $emissores;
 		}
 
+		public static function obterVoluntarios( )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT * FROM voluntario";
+			if(isset($_GET['cpf']))
+				$sql .= " WHERE cpf = '".pg_escape_string($_GET['cpf'])."'";
+			$query = $dbconn->executeRead($sql);
+
+			return $query->fetchAll();
+		}
+
 	}
 
 ?>

@@ -6,9 +6,9 @@
 
 <?php if($handlerReturn === true && isset($_POST['VolunteerForm'])): ?>
 	<div class="alert alert-success">
-		Voluntário cadastrado com sucesso
+		Voluntário <?php echo (is_array($handlerReturn) && !isset($_GET['cpf'])) ? 'cadastrado' : 'editado'; ?> com sucesso
 	</div>
-<?php elseif(is_array($handlerReturn)): ?>
+<?php elseif (is_array($handlerReturn) && isset($_POST['VolunteerForm'])): ?>
 	<div class="alert alert-danger">
 		Ocorreu um erro ao cadastrar o voluntário, por favor verifique os dados digitados	
 	</div>
@@ -16,9 +16,11 @@
 
 
 <div class="jumbotron-wrapper">
-	<h3 class="title">Cadastrar Voluntário</h3>
+	<h3 class="title"><?php echo (is_array($handlerReturn) && !isset($_GET['cpf'])) ? 'Cadastrar' : 'Editar'; ?> Voluntário</h3>
 	<div class="jumbotron">
 		<form method="POST" class="form-horizontal">
+
+			<input type="hidden" name="newRecord" value="<?php echo (int)(!isset($_GET['cpf'])); ?>">
 
 			<div class="control-group">
 				<label class="control-label" for="inputCpf">CPF</label>
@@ -114,7 +116,7 @@
 			<div class="control-group">
 				<label class="control-label" for="inputEmail">E-mail</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" id="inputEmail" name="VolunteerForm[email]" required>
+					<input class="input-xlarge" type="email" id="inputEmail" name="VolunteerForm[email]" required>
 				</div>
 			</div>
 
@@ -188,7 +190,7 @@
 </div>
 
 <script>
-	<?php if($handlerReturn !== true): ?>
+	<?php if(is_array($handlerReturn)): ?>
 		var attributes = <?php echo json_encode($handlerReturn); ?>
 
 		jQuery.each(attributes, function(i, value) {

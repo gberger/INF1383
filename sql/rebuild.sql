@@ -39,7 +39,7 @@ CREATE TABLE voluntario
 	formacao formacao_type NOT NULL,
 	obs varchar(1024),
 	CONSTRAINT PK_Voluntario_CPF PRIMARY KEY(CPF),
-	CONSTRAINT FK_Voluntario_Sigla_Emissor FOREIGN KEY(sigla_emissor) REFERENCES emissor_rg(sigla)
+	CONSTRAINT FK_Voluntario_Sigla_Emissor FOREIGN KEY(sigla_emissor) REFERENCES emissor_rg(sigla) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 CREATE TABLE filial
@@ -60,7 +60,7 @@ CREATE TABLE funcionario
 	password char(20) NOT NULL,
 	email char(60) NOT NULL,
 	CONSTRAINT PK_Funcionario_Matr PRIMARY KEY(matricula),
-	CONSTRAINT FK_Funcionario_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo)
+	CONSTRAINT FK_Funcionario_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 
@@ -73,8 +73,8 @@ CREATE TABLE atividade (
 	endereco varchar(256),
 	descricao varchar(256),
 	CONSTRAINT PK_Atividade_Codigo PRIMARY KEY(codigo),
-	CONSTRAINT FK_Atividade_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo),
-	CONSTRAINT FK_Atividade_Cod_Responsavel FOREIGN KEY(matr_responsavel) REFERENCES funcionario(matricula)
+	CONSTRAINT FK_Atividade_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
+	CONSTRAINT FK_Atividade_Cod_Responsavel FOREIGN KEY(matr_responsavel) REFERENCES funcionario(matricula) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE lingua (
@@ -91,8 +91,8 @@ CREATE TABLE fala (
 	cod_ling INTEGER NOT NULL,
 	nivel nivel_ling_type NOT NULL,
 	CONSTRAINT PK_Fala_PK PRIMARY KEY (cpf_vol, cod_ling),
-	CONSTRAINT Fala_CPF_FK FOREIGN KEY (cpf_vol) REFERENCES voluntario(cpf),
-	CONSTRAINT Fala_CodLing_FK FOREIGN KEY(cod_ling) REFERENCES lingua(codigo)
+	CONSTRAINT Fala_CPF_FK FOREIGN KEY (cpf_vol) REFERENCES voluntario(cpf) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT Fala_CodLing_FK FOREIGN KEY(cod_ling) REFERENCES lingua(codigo) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE participacao (
@@ -101,8 +101,8 @@ CREATE TABLE participacao (
 	horas_trab SMALLINT NOT NULL,
 	descricao varchar(256) NOT NULL,
 	CONSTRAINT PK_Participacao_CPFVol_CodLing PRIMARY KEY(cpf_vol, cod_ativ),
-	CONSTRAINT FK_Participacao_CPFVol FOREIGN KEY(cpf_vol) REFERENCES Voluntario(cpf),
-	CONSTRAINT FK_Participacao_CodAtiv FOREIGN KEY(cod_ativ) REFERENCES Atividade(codigo),
+	CONSTRAINT FK_Participacao_CPFVol FOREIGN KEY(cpf_vol) REFERENCES Voluntario(cpf) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_Participacao_CodAtiv FOREIGN KEY(cod_ativ) REFERENCES Atividade(codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
 	CONSTRAINT CK_Participacao_Horas check( horas_trab between 1 and 8 )
 );
 
@@ -136,4 +136,7 @@ INSERT INTO filial VALUES
 INSERT INTO funcionario VALUES
 (1, 1, 'Fulano da Silva', 'fulano', '1234', 'email@email.com');
 
+INSERT INTO voluntario VALUES
+('12345678909', 'Felipe Luiz', NULL, NULL, 'Av. Rio Branco 1 - Centro - Rio de Janeiro - RJ', '123456', 'SSP', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'ferocha@globo.com', 'A+', 'B', '97794229', NULL, 'superior incompleto', NULL)
+;
 

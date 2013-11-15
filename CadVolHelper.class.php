@@ -25,7 +25,7 @@
 			if(isset($_POST['username']))
 			{
 				$dbconn = new SqlManager();
-				$sql = "SELECT * FROM funcionario WHERE username = '".pg_escape_string($_POST['username'])."';";
+				$sql = "SELECT * FROM funcionario NATURAL JOIN voluntario WHERE username = '".pg_escape_string($_POST['username'])."';";
 				$query = $dbconn->executeRead($sql);
 
 				$user = $query->fetch();

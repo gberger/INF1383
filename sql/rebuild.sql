@@ -54,13 +54,12 @@ CREATE TABLE filial
 
 CREATE TABLE funcionario
 (
-	matricula numeric(10) NOT NULL,
+	cpf numeric(11) NOT NULL,
 	cod_filial INTEGER NOT NULL,
-	nome varchar(128) NOT NULL,
 	username char(20) NOT NULL,
 	password char(20) NOT NULL,
-	email char(60) NOT NULL,
-	CONSTRAINT PK_Funcionario_Matr PRIMARY KEY(matricula),
+	CONSTRAINT PK_Funcionario_Matr PRIMARY KEY(cpf),
+	CONSTRAINT FK_Funcionario_CPF FOREIGN KEY (cpf) REFERENCES voluntario(cpf) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT FK_Funcionario_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -68,14 +67,14 @@ CREATE TABLE funcionario
 CREATE TABLE atividade (
 	codigo SERIAL NOT NULL,
 	cod_filial INTEGER NOT NULL,
-	matr_responsavel numeric(10),
+	cpf_responsavel numeric(10),
 	nome varchar(128) NOT NULL,
 	data date,
 	endereco varchar(256),
 	descricao varchar(256),
 	CONSTRAINT PK_Atividade_Codigo PRIMARY KEY(codigo),
 	CONSTRAINT FK_Atividade_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
-	CONSTRAINT FK_Atividade_Cod_Responsavel FOREIGN KEY(matr_responsavel) REFERENCES funcionario(matricula) ON DELETE SET NULL ON UPDATE CASCADE
+	CONSTRAINT FK_Atividade_Cod_Responsavel FOREIGN KEY(cpf_responsavel) REFERENCES funcionario(cpf) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE lingua (
@@ -134,10 +133,12 @@ INSERT INTO emissor_rg VALUES
 INSERT INTO filial VALUES
 (1, 'Rio de Janeiro', 'Praça da Cruz Vermelha, 10 - Centro - Rio de Janeiro - RJ');
 
-INSERT INTO funcionario VALUES
-(1, 1, 'Fulano da Silva', 'fulano', '1234', 'email@email.com');
-
 INSERT INTO voluntario VALUES
 ('12345678909', 'Felipe Luiz', '1994-06-17', NULL, NULL, 'Av. Rio Branco 1 - Centro - Rio de Janeiro - RJ', '123456', 'SSP', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'ferocha@globo.com', 'A+', 'B', '97794229', NULL, 'superior incompleto', NULL)
 ;
+
+INSERT INTO funcionario VALUES
+('12345678909', 1, 'fulano', '1234')
+;
+
 

@@ -64,6 +64,36 @@
 			return $emissores;
 		}
 
+		public static function obterFiliais( )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT * FROM filial";
+			$query = $dbconn->executeRead($sql);
+
+			$filiais = array();
+			foreach($query as $row) {
+				$filiais[$row['codigo']] = $row['estado'];
+			}
+
+			return $filiais;
+		}
+
+		public static function obterFuncionarios( )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT * FROM funcionario";
+			$query = $dbconn->executeRead($sql);
+
+			$filiais = self::obterFiliais();
+
+			$funcionarios = array();
+			foreach($query as $row) {
+				$funcionarios[$row['matricula']] = $row['nome'].' - '.$filiais[$row['cod_filial']]['estado'];
+			}
+
+			return $funcionarios;
+		}
+
 		public static function obterVoluntarios( )
 		{
 			$dbconn = new SqlManager();

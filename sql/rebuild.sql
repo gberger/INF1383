@@ -22,6 +22,7 @@ CREATE TABLE voluntario
 (
 	cpf numeric(11) NOT NULL,
 	nome varchar(128) NOT NULL,
+	data_nasc DATE NOT NULL,
 	nome_pai varchar(128),
 	nome_mae varchar(128),
 	endereco varchar(256) NOT NULL,
@@ -137,6 +138,6 @@ INSERT INTO funcionario VALUES
 (1, 1, 'Fulano da Silva', 'fulano', '1234', 'email@email.com');
 
 INSERT INTO voluntario VALUES
-('12345678909', 'Felipe Luiz', NULL, NULL, 'Av. Rio Branco 1 - Centro - Rio de Janeiro - RJ', '123456', 'SSP', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'ferocha@globo.com', 'A+', 'B', '97794229', NULL, 'superior incompleto', NULL)
+('12345678909', 'Felipe Luiz', '1994-06-17', NULL, NULL, 'Av. Rio Branco 1 - Centro - Rio de Janeiro - RJ', '123456', 'SSP', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'ferocha@globo.com', 'A+', 'B', '97794229', NULL, 'superior incompleto', NULL)
 ;
 

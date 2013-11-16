@@ -44,8 +44,7 @@
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Atividades <b class="caret"></b></a>
 		      <ul class="dropdown-menu">
 		        <li><a href="/atividade/cadastrar.php">Cadastrar</a></li>
-		        <li><a href="#">Registrar participação</a></li>
-		        <li><a href="#">Visualizar participantes</a></li>
+		        <li><a href="/atividade/visualizar.php">Visualizar</a></li>
 		      </ul>
 		    </li>
 		  </ul>

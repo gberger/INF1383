@@ -6,7 +6,7 @@
 
 <?php if($handlerReturn === true && isset($_POST['VolunteerForm'])): ?>
 	<div class="alert alert-success">
-		Voluntário <?php echo (is_array($handlerReturn) && !isset($_GET['cpf'])) ? 'cadastrado' : 'editado'; ?> com sucesso
+		Voluntário <?php echo (!isset($_GET['cpf'])) ? 'cadastrado' : 'editado'; ?> com sucesso
 	</div>
 <?php elseif (is_array($handlerReturn) && isset($_POST['VolunteerForm'])): ?>
 	<div class="alert alert-danger">
@@ -16,7 +16,7 @@
 
 
 <div class="jumbotron-wrapper">
-	<h3 class="title"><?php echo (is_array($handlerReturn) && !isset($_GET['cpf'])) ? 'Cadastrar' : 'Editar'; ?> Voluntário</h3>
+	<h3 class="title"><?php echo (!isset($_GET['cpf'])) ? 'Cadastrar' : 'Editar'; ?> Voluntário</h3>
 	<div class="jumbotron">
 		<form method="POST" class="form-horizontal">
 

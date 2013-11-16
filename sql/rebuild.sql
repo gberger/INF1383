@@ -67,7 +67,7 @@ CREATE TABLE funcionario
 CREATE TABLE atividade (
 	codigo SERIAL NOT NULL,
 	cod_filial INTEGER NOT NULL,
-	cpf_responsavel numeric(10),
+	cpf_responsavel numeric(11),
 	nome varchar(128) NOT NULL,
 	data date,
 	endereco varchar(256),
@@ -139,6 +139,14 @@ INSERT INTO voluntario VALUES
 
 INSERT INTO funcionario VALUES
 ('12345678909', 1, 'fulano', '1234')
+;
+
+INSERT INTO atividade VALUES
+(DEFAULT, 1, '12345678909', 'Evento', '01/01/2013', 'Praça São Fulano da Silva - Centro - Rio de Janeiro', 'Ativiidade da CVB')
+;
+
+INSERT INTO participacao VALUES
+('12345678909', 1, 6, 'Voluntario')
 ;
 
 

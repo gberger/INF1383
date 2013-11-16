@@ -78,17 +78,17 @@
 			return $filiais;
 		}
 
-		public static function obterFuncionarios( )
+		public static function obterFuncionariosParaDropdown( )
 		{
 			$dbconn = new SqlManager();
-			$sql = "SELECT * FROM funcionario";
+			$sql = "SELECT * FROM funcionario NATURAL INNER JOIN voluntario ORDER BY nome";
 			$query = $dbconn->executeRead($sql);
 
 			$filiais = self::obterFiliais();
 
 			$funcionarios = array();
 			foreach($query as $row) {
-				$funcionarios[$row['matricula']] = $row['nome'].' - '.$filiais[$row['cod_filial']]['estado'];
+				$funcionarios[$row['cpf']] = $row['nome'].' - '.$filiais[$row['cod_filial']];
 			}
 
 			return $funcionarios;
@@ -102,6 +102,31 @@
 				$sql .= " WHERE cpf = '".pg_escape_string($_GET['cpf'])."'";
 			$query = $dbconn->executeRead($sql);
 
+			return $query->fetchAll();
+		}
+
+		public static function obterAtividades( )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT atividade.codigo, atividade.data, atividade.nome, atividade.endereco, COUNT(participacao.cpf_vol) as totalvol ";
+			$sql .= "FROM atividade LEFT OUTER JOIN participacao ON atividade.codigo = participacao.cod_ativ";
+			if(isset($_GET['data'])) {
+				$data = DateTime::createFromFormat('d/m/Y',$_GET['data'])->format('Y-m-d');
+				$sql .= " WHERE atividade.data = '".pg_escape_string($data)."'";
+			}
+			$sql .= " GROUP BY atividade.codigo";
+			$query = $dbconn->executeRead($sql);	
+
+			return $query->fetchAll();
+		}
+
+		public static function obterParticipantes( )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT * FROM participacao LEFT JOIN voluntario ON participacao.cpf_vol = voluntario.cpf ";
+			$sql .= "WHERE participacao.cod_ativ = '".pg_escape_string($_GET['codigo'])."';";
+			$query = $dbconn->executeRead($sql);
+			
 			return $query->fetchAll();
 		}
 

@@ -57,6 +57,7 @@
 			try
 			{
 				$result = $this->conn->query($query);
+				if($result == false) var_dump($this->conn->errorInfo());
 				return $result;
 			}
 			catch ( Exception $e)

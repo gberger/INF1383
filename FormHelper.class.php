@@ -39,7 +39,7 @@ class FormHelper {
 		} else {
 
 			if(isset($_POST['ActivityForm'])) {
-				$insert = "INSERT INTO voluntario VALUES ( NULL, ";
+				$insert = "INSERT INTO atividade VALUES ( DEFAULT, ";
 				foreach ($_POST['ActivityForm'] as $attr => $value) {
 					if($attr == 'data')
 						$value = DateTime::createFromFormat('d/m/Y',$value)->format('Y-m-d');
@@ -49,7 +49,7 @@ class FormHelper {
 					else
 						$insert .= "NULL";
 
-					if($attr != 'obs')
+					if($attr != 'descricao')
 						$insert .= ", ";
 				}
 				$insert .= ");";

@@ -111,8 +111,11 @@
 			$sql = "SELECT atividade.codigo, atividade.data, atividade.nome, atividade.endereco, COUNT(participacao.cpf_vol) as totalvol ";
 			$sql .= "FROM atividade LEFT OUTER JOIN participacao ON atividade.codigo = participacao.cod_ativ";
 			if(isset($_GET['data'])) {
-				$data = DateTime::createFromFormat('d/m/Y',$_GET['data'])->format('Y-m-d');
-				$sql .= " WHERE atividade.data = '".pg_escape_string($data)."'";
+				$datetime = DateTime::createFromFormat('d/m/Y',$_GET['data']);
+				if($datetime != NULL) {
+					$data = $datetime->format('Y-m-d');
+					$sql .= " WHERE atividade.data = '".pg_escape_string($data)."'";
+				}
 			}
 			$sql .= " GROUP BY atividade.codigo";
 			$query = $dbconn->executeRead($sql);	

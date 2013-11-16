@@ -6,7 +6,7 @@
 	<h3 class="title">Visualizar Atividades</h3>
 	<div style="float: right; position: relative; top: -40px; padding-right: 10%">
 		<form method="GET" class="form-search">
-			<input type="text" name="data" class="input-medium search-query" placeholder="Data" <?php if(isset($_GET['cpf'])) echo 'value="'.$_GET['cpf'].'"'; ?>>
+			<input id="date-search" type="text" name="data" class="input-medium search-query" placeholder="Data" <?php if(isset($_GET['data'])) echo 'value="'.$_GET['data'].'"'; ?>>
 			<button type="submit" class="btn">Buscar</button>
 		</form>
 	</div>
@@ -49,5 +49,9 @@
 
 	</div>
 </div>
+
+<script>
+	$("#date-search").mask("99/99/9999");
+</script>
 
 <?php require "../layout/layoutBottom.php" ; ?>

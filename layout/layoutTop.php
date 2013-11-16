@@ -14,7 +14,9 @@
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/dist/css/form.css" rel="stylesheet">
     <link href="/dist/css/main.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/dist/js/jquery.mask.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -88,6 +88,8 @@
 </div>
 
 <script>
+	$("#inputData").mask("99/99/9999");
+
 	<?php if(is_array($handlerReturn)): ?>
 		var attributes = <?php echo json_encode($handlerReturn); ?>
 

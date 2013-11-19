@@ -1,8 +1,5 @@
-CREATE OR REPLACE FUNCTION cpf_validar(par_cpf varchar(11)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION cpf_validar( ) RETURNS trigger AS $$
 	-- ROTINA DE VALIDAÇÃO DE CPF
-	-- Conversão para o PL/ PGSQL: Cláudio Leopoldino - http://postgresqlbr.blogspot.com/
-	-- Algoritmo original: http://webmasters.neting.com/msg07743.html
-	-- Retorna 1 para CPF correto.
 	DECLARE
 	x real;
 	y real; --Variável temporária
@@ -14,7 +11,8 @@ CREATE OR REPLACE FUNCTION cpf_validar(par_cpf varchar(11)) RETURNS integer AS $
 	val_par_cpf varchar(11); --Valor do parâmetro
 	BEGIN
 	-- Teste do tamanho da string de entrada
-	IF char_length(par_cpf) = 11 THEN
+	val_par_cpf := CAST(NEW.cpf AS varchar(11));
+	IF char_length(val_par_cpf) = 11 THEN
 	ELSE
 	RAISE NOTICE 'Formato inválido: %',$1;
 	RETURN 0;
@@ -25,7 +23,6 @@ CREATE OR REPLACE FUNCTION cpf_validar(par_cpf varchar(11)) RETURNS integer AS $
 	dig1 := 0;
 	dig2 := 0;
 	contloop := 0;
-	val_par_cpf := $1; --Atribuição do parâmetro a uma variável interna
 	len := char_length(val_par_cpf);
 	x := len -1;
 	--Loop de multiplicação - dígito 1
@@ -53,13 +50,13 @@ CREATE OR REPLACE FUNCTION cpf_validar(par_cpf varchar(11)) RETURNS integer AS $
 	IF (dig2 = 11) THEN dig2 := 0; END IF;
 	--Teste do CPF
 	IF ((dig1 || '' || dig2) = substring(val_par_cpf FROM len-1 FOR 2)) THEN
-	RETURN 1;
+	RETURN NEW;
 	ELSE
-	RAISE EXCEPTION 'DV do CPF Inválido: %',$1;
-	RETURN 0;
+	RAISE EXCEPTION 'DV do CPF Inválido: %',NEW.cpf;
+	RETURN NULL;
 	END IF;
 	END;
 $$ LANGUAGE PLPGSQL;
 
-CREATE TRIGGER validacao_CPF BEFORE INSERT OR UPDATE ON voluntario
-EXECUTE PROCEDURE cpf_validar( cpf );
+CREATE TRIGGER validacao_CPF BEFORE INSERT OR UPDATE OF cpf ON pessoa
+FOR EACH ROW EXECUTE PROCEDURE cpf_validar( );

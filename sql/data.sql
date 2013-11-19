@@ -24,7 +24,7 @@ INSERT INTO emissor_rg VALUES
 INSERT INTO filial VALUES
 (1, 'Rio de Janeiro', 'Praça da Cruz Vermelha, 10 - Centro - Rio de Janeiro - RJ');
 
-INSERT INTO voluntario VALUES
+INSERT INTO pessoa VALUES
 ('12345678909', 'Felipe Luiz', '1994-06-17', NULL, NULL, 'Av. Rio Branco 1 - Centro - Rio de Janeiro - RJ', '123456', 'SSP', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'ferocha@globo.com', 'A+', 'B', '97794229', NULL, 'superior incompleto', NULL)
 ;
 

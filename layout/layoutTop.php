@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/font-awesome.css" rel="stylesheet">
     <link href="/assets/css/form.css" rel="stylesheet">
     <link href="/assets/css/main.css" rel="stylesheet">
 
@@ -26,7 +27,7 @@
 
   	<div class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
-		  <a class="navbar-brand" href="#">Sistema CadVol</a>
+		  <a class="navbar-brand" href="#"><i class="fa fa-lg fa-plus cruz-vermelha"></i> Sistema CadVol</a>
 		</div>
 		<div class="navbar-collapse collapse">
 		  <ul class="nav navbar-nav">

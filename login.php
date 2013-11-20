@@ -19,10 +19,10 @@
     <title>Sistema CadVol</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/dist/css/login.css" rel="stylesheet">
+    <link href="/assets/css/login.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -38,7 +38,7 @@
 
     <div class="container">
 
-      <img id="logo" src="/dist/img/logocvb.jpg"/>
+      <img id="logo" src="/assets/img/logocvb.jpg"/>
 
       <form class="form-signin" method="POST">
         <h2 class="form-signin-heading">Sistema CadVol</h2>

@@ -30,7 +30,7 @@ INSERT INTO filial VALUES
 (DEFAULT, 'Rio de Janeiro', 'Praça da Cruz Vermelha, 10 - Centro - Rio de Janeiro - RJ'),
 (DEFAULT, 'São Paulo', 'Av. Moreira Guimarães, 699 - Moema - São Paulo - SP');
 
-INSERT INTO voluntario VALUES
+INSERT INTO pessoa VALUES
 ('12345678909', 'Felipe Luiz', '1994-06-17', NULL, NULL, 'Av. Rio Branco 1 - Centro - Rio de Janeiro - RJ', '123456', 'SSP', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'ferocha@globo.com', 'A+', 'B', '97794229', NULL, 'superior incompleto', NULL),
 ('28246103440', 'Gabriel Siqueira', '1993-10-14', NULL, NULL, 'R. Marquês de São Vicente, 225 - Gávea - Rio de Janeiro - RJ,', '987654', 'PM', 'Rio de Janeiro', 'solteiro', 'M', 'Estudante', 'gabrielsiq@msn.com', 'A+', 'B', '96492755', NULL, 'superior incompleto', NULL),
 ('74114767223', 'Pedro Bandeira', '1947-11-04', 'Marcos', 'Flavia', 'R. das Laranjeiras, 33 - Laranjeiras - Rio de Janeiro - RJ,', '456987', 'PC', 'Rio de Janeiro', 'casado', 'M', 'Médico', 'pb@bol.com', 'B+', 'B', '88754789', NULL, 'superior completo', 'Ortopedista'),
@@ -48,9 +48,9 @@ INSERT INTO funcionario VALUES
 ;
 
 INSERT INTO atividade VALUES
-(DEFAULT, 1, '12345678909', 'Evento', '01/01/2013', 'Praça São Fulano da Silva - Centro - Rio de Janeiro', 'Atividade da CVB'),
-(DEFAULT, 2, '04257774720', 'Arrecadação de Alimentos', '05/07/2013', 'Praça do Feijão - Liberdade - São Paulo', 'Arrecadação de alimentos para os desabrigados das chuvas'),
-(DEFAULT, 1, '28246103440', 'JMJ', '15/07/2013', 'Base Aerea de Santa Cruz - Santa Cruz - Rio de Janeiro', 'Jornada mundial da juventude')
+(DEFAULT, 1, '12345678909', 'Evento', '2013-01-01', 'Praça São Fulano da Silva - Centro - Rio de Janeiro', 'Atividade da CVB'),
+(DEFAULT, 2, '04257774720', 'Arrecadação de Alimentos', '2013-07-05', 'Praça do Feijão - Liberdade - São Paulo', 'Arrecadação de alimentos para os desabrigados das chuvas'),
+(DEFAULT, 1, '28246103440', 'JMJ', '2013-07-13', 'Base Aerea de Santa Cruz - Santa Cruz - Rio de Janeiro', 'Jornada mundial da juventude')
 ;
 
 INSERT INTO participacao VALUES

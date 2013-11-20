@@ -11,8 +11,13 @@
 		</form>
 	</div>
 	<div class="jumbotron" style="padding-right: 30px; padding-left: 30px; position: relative; top: -55px;">
+		<?php if(count($voluntarios) == 0): ?>
+			<p>
+				Nenhum resultado encontrado.
+			</p>
+		<?php else: ?>
 		<table class="volunteers-table">
-			<tbody>
+			<thead>
 				<tr>
 					<th style="width: 20%">CPF</th>
 					<th style="width: 40%">Nome</th>
@@ -20,11 +25,8 @@
 					<th style="width: 20%">e-mail</th>
 					<th style="width: 20px"></th>
 				</tr>
-				<?php if(count($voluntarios) == 0): ?>
-					<tr>
-						<td colspan="5" style="text-align: center; border-bottom: 0px">(nenhum resultado encontrado)</td>
-					</tr>
-				<?php endif; ?>
+			</thead>
+			<tbody>
 				<?php foreach($voluntarios as $voluntario): ?>
 					<tr>
 						<td><?php echo $voluntario['cpf']; ?></td>
@@ -40,7 +42,7 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-
+		<?php endif; ?>
 
 	</div>
 </div>

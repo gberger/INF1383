@@ -11,8 +11,11 @@
 		</form>
 	</div>
 	<div class="jumbotron" style="padding-right: 30px; padding-left: 30px; position: relative; top: -55px;">
+		<?php if(count($atividades) == 0): ?>
+			<p>Nenhum resultado encontrado.</p>
+		<?php else: ?>
 		<table class="volunteers-table">
-			<tbody>
+			<thead>
 				<tr>
 					<th style="width: 10%">Data</th>
 					<th style="width: 32%">Nome</th>
@@ -20,11 +23,8 @@
 					<th style="width: 12%">Total Vol.</th>
 					<th style="width: 20px"></th>
 				</tr>
-				<?php if(count($atividades) == 0): ?>
-					<tr>
-						<td colspan="5" style="text-align: center; border-bottom: 0px">(nenhum resultado encontrado)</td>
-					</tr>
-				<?php endif; ?>
+			</thead>
+			<tbody>
 				<?php foreach($atividades as $atividade): ?>
 					<tr>
 						<td><?php echo DateTime::createFromFormat('Y-m-d',$atividade['data'])->format('d/m/Y'); ?></td>
@@ -45,7 +45,7 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-
+		<?php endif; ?>
 
 	</div>
 </div>

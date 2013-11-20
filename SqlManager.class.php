@@ -14,11 +14,16 @@
 		{
 			
 			$user = "postgres";
-			$pass = "cadvol";
 			$host = "localhost";
+			$pass = "cadvol";
 			$name = "cadvol";
 			$type = "pgsql";
 			$port = "5432";
+			
+			if(gethostname() === 'gberger-xps'){
+				$pass = "senha123";
+				$port = "54322";
+			}
 			
 			try
 			{

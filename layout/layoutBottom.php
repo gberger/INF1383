@@ -1,9 +1,9 @@
     	
     </div>
-
     
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery.mask.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

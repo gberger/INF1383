@@ -10,13 +10,10 @@
     <title>Sistema CadVol</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="/dist/css/form.css" rel="stylesheet">
-    <link href="/dist/css/main.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="/dist/js/jquery.mask.min.js"></script>
+
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/form.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,6 +47,7 @@
 		      </ul>
 		    </li>
 		  </ul>
+
 		  <ul class="nav navbar-nav navbar-right">
 		    <li><div style=" padding: 15px"><?php echo $_SESSION['funcionario']['nome'];?></div></li>
 		    <li><a style="padding-left: 5px; padding-right: 5px;" href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
@@ -66,3 +64,4 @@
 
   	<div class="container">
     	
+      

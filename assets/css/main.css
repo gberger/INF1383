@@ -6,6 +6,11 @@ body {
   margin-bottom: 20px;
 }
 
+.cruz-vermelha {
+	color: red;
+}
+
+
 .jumbotron-wrapper {
 	text-align: center;
 	padding: 0px 20px;

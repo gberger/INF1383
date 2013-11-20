@@ -12,16 +12,19 @@
 	</div>
 	<div class="jumbotron" style="padding-right: 30px; padding-left: 30px; position: relative; top: -55px;">
 		<?php if(count($atividades) == 0): ?>
-			<p>Nenhum resultado encontrado.</p>
+			<p>
+				Nenhum resultado encontrado.
+			</p>
 		<?php else: ?>
-		<table class="volunteers-table">
+		<table class="volunteers-table activities-table">
 			<thead>
 				<tr>
 					<th style="width: 10%">Data</th>
 					<th style="width: 32%">Nome</th>
 					<th style="width: 32%">Endereço</th>
 					<th style="width: 12%">Total Vol.</th>
-					<th style="width: 20px"></th>
+					<th style="width: 20px">Ver</th>
+					<th style="width: 20px">Editar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,14 +33,14 @@
 						<td><?php echo DateTime::createFromFormat('Y-m-d',$atividade['data'])->format('d/m/Y'); ?></td>
 						<td><?php echo $atividade['nome']; ?></td>
 						<td><?php echo $atividade['endereco']; ?></td>
+						<td><?php echo $atividade['totalvol']; ?></td>
 						<td>
-							<?php echo $atividade['totalvol']; ?>
-							<a style="float: right" href="/atividade/participacao.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
+							<a href="/atividade/participacao.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
 								<span class="glyphicon glyphicon-eye-open"></span>
 							</a>
 						</td>
 						<td>
-							<a style="float: right" href="/atividade/cadastrar.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
+							<a href="/atividade/cadastrar.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
 						</td>
@@ -45,6 +48,12 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+
+		<script>
+			$(document).ready(function(){
+				$('.activities-table').dataTable();
+			})
+		</script>
 		<?php endif; ?>
 
 	</div>

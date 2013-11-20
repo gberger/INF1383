@@ -22,8 +22,9 @@
 					<th style="width: 20%">CPF</th>
 					<th style="width: 40%">Nome</th>
 					<th style="width: 20%">Telefone</th>
-					<th style="width: 20%">e-mail</th>
-					<th style="width: 20px"></th>
+					<th style="width: 20%">E-mail</th>
+					<th style="width: 20px">Ver</th>
+					<th style="width: 20px">Editar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,6 +35,11 @@
 						<td><?php echo $voluntario['tel1']; ?></td>
 						<td><?php echo $voluntario['email']; ?></td>
 						<td>
+							<a href="/voluntario/ver-um.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
+								<span class="glyphicon glyphicon-eye-open"></span>
+							</a>
+						</td>
+						<td>
 							<a href="/voluntario/cadastrar.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
@@ -42,6 +48,12 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+
+		<script>
+			$(document).ready(function(){
+				$('.volunteers-table').dataTable();
+			})
+		</script>
 		<?php endif; ?>
 
 	</div>

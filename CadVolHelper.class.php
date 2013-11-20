@@ -98,7 +98,7 @@
 		{
 			$dbconn = new SqlManager();
 			$sql = "SELECT * FROM voluntario";
-			if(isset($_GET['cpf']))
+			if(isset($_GET['cpf']) && $_GET['cpf'] !== '')
 				$sql .= " WHERE cpf = '".pg_escape_string($_GET['cpf'])."'";
 			$query = $dbconn->executeRead($sql);
 
@@ -108,7 +108,7 @@
 		public static function obterAtividades( )
 		{
 			$dbconn = new SqlManager();
-			$sql = "SELECT atividade.codigo, atividade.data, atividade.nome, atividade.endereco, COUNT(participacao.cpf_vol) as totalvol ";
+			$sql = "SELECT atividade.codigo, atividade.data, atividade.nome, atividade.endereco, COUNT(participacao.cpf) as totalvol ";
 			$sql .= "FROM atividade LEFT OUTER JOIN participacao ON atividade.codigo = participacao.cod_ativ";
 			if(isset($_GET['data'])) {
 				$datetime = DateTime::createFromFormat('d/m/Y',$_GET['data']);

@@ -16,6 +16,7 @@ $.extend( true, $.fn.dataTable.defaults, {
           "sNext":     "Seguinte",
           "sLast":     "Último"
       }
-    }
+    },
+    "bFilter": false  //hide search
   }
 );

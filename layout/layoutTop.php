@@ -55,14 +55,8 @@
 		    <li><div style=" padding: 15px"><?php echo $_SESSION['funcionario']['nome'];?></div></li>
 		    <li><a style="padding-left: 5px; padding-right: 5px;" href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
 		    <li><a href="/login.php?action=logout">Sair</a></li>
-		  <!--
-		  <ul class="nav navbar-nav navbar-right">
-		    <li class="active"><a href="./">Default</a></li>
-		    <li><a href="../navbar-static-top/">Static top</a></li>
-		    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-		  </ul>
-			-->
-		</div><!--/.nav-collapse -->
+		</div>
+    
 	</div>
 
   	<div class="container">

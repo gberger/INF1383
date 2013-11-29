@@ -62,5 +62,24 @@ INSERT INTO participacao VALUES
 ('74114767223', 3, 6, 'Socorrista')
 ;
 
+INSERT INTO lingua VALUES
+(DEFAULT, 'Alemão','Hochdeutsch'),
+(DEFAULT, 'Alemão','Schwäbisch'),
+(DEFAULT, 'Alemão','Kölsch'),
+(DEFAULT, 'Espanhol','Espanha'),
+(DEFAULT, 'Espanhol','Argentina'),
+(DEFAULT, 'Inglês','EUA'),
+(DEFAULT, 'Inglês','UK'),
+(DEFAULT, 'Inglês','África do Sul')
+;
+
+INSERT INTO fala VALUES
+('12345678909',6,'fluente'),
+('28246103440',6,'medio'),
+('28246103440',1,'iniciante'),
+('74114767223',4,'fluente'),
+('04257774720',8,'medio'),
+('41568633360',5,'iniciante')
+;
 
 

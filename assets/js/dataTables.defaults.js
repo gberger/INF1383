@@ -1,4 +1,5 @@
 $.extend( true, $.fn.dataTable.defaults, {
+  "sDom": "<'row'<'col-xs-6'><'col-xs-6'f>r>t<'row'<'col-xs-3'i><'col-xs-3'l><'col-xs-6'p>>",
   "oLanguage":
     {
       "sProcessing":   "Processando...",
@@ -17,6 +18,5 @@ $.extend( true, $.fn.dataTable.defaults, {
           "sLast":     "Último"
       }
     },
-    "bFilter": false  //hide search
-  }
-);
+  "bFilter": false  //hide search
+});

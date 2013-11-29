@@ -7,7 +7,7 @@
 <div class="row well">
 	<div class="col-md-12">
 		
-		<div style="margin-bottom: 20px;">
+		<div class="advanced-search">
 			
 			<h3>Busca avançada</h3>
 
@@ -76,11 +76,11 @@
 
 		<script>
 			$(document).ready(function(){
-				$('.activities-table').dataTable({
-  "sDom": "<'row'<'col-xs-6'><'col-xs-6'f>r>t<'row'<'col-xs-3'i><'col-xs-3'l><'col-xs-6'p>>"});
+				$('.activities-table').dataTable();
 			})
 		</script>
 		<?php endif; ?>
+		
 	</div>
 </div>
 	

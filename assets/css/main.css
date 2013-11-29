@@ -41,6 +41,10 @@ body {
 	float: right;
 }
 
+.advanced-search {
+	margin-bottom: 20px;
+}
+
 .volunteers-table th,td {
 	/*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 	margin-bottom: 2px;

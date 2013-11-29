@@ -1,13 +1,10 @@
 <?php require "layout/layoutTop.php" ; ?>
 
-<div class="jumbotron">
-  <div class="container">
+<div class="well">
     <h1>Sistema de Cadastro de Voluntários da Cruz Vermelha Brasileira</h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, magni qui quisquam delectus natus ad quibusdam reiciendis corporis cupiditate molestias illo nulla atque repudiandae commodi quaerat rem dolores nemo iusto?
     </p>
-
-  </div>
 </div>
 
 <div class="container">

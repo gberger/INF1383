@@ -1,4 +1,5 @@
     	
+    <?php require "alerts.php" ; ?>
     </div>
     
     <script src="/assets/js/jquery-ui.min.js"></script>

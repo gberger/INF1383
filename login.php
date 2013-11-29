@@ -1,8 +1,9 @@
 <?php
     require_once "CadVolHelper.class.php";
 
-
-    $loginError = CadVolHelper::handleLogin( );
+    if(!CadVolHelper::handleLogin( ) === false){
+      CadVolHelper::addAlert('Usu&aacute;rio ou senha inv&aacute;lidos.', 'danger');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,6 @@
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/assets/css/login.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -32,32 +32,61 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #eee;
+      }
+
+      div.container {
+        margin-top: 80px;
+      }
+    </style>
   </head>
 
   <body>
 
     <div class="container">
+      
+      <?php require "layout/alerts.php" ; ?>
+  
+      <div class="row">
+        
+        <div class="col-md-4">
+          <img id="logo" src="/assets/img/logocvb.jpg"/>
+        </div>
 
-      <img id="logo" src="/assets/img/logocvb.jpg"/>
+        <div class="col-md-4 col-md-offset-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Entre com suas credenciais</h3>
+            </div>
 
-      <form class="form-signin" method="POST">
-        <h2 class="form-signin-heading">Sistema CadVol</h2>
-        <input type="text" name="username" class="form-control" placeholder="Nome de usuário" required autofocus>
-        <input type="password" name="password" class="form-control" placeholder="Senha" required>
-        <?php if($loginError): ?>
-          <span style="color: #d00;">Usuário/senha inválidos</span>
-        <?php endif; ?>
-        <label class="checkbox">
-          <input type="checkbox" name="rememberMe" value="remember-me"> Mantenha-me conectado
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
-      </form>
+            <div class="panel-body">
+              <form role="form" method="POST">
+                <fieldset>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="Nome de usu&aacute;rio" required autofocus>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password" required>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input name="rememberMe" type="checkbox" value="remember-me"> Mantenha-me conectado
+                    </label>
+                  </div>
+                  <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
 
-    </div> <!-- /container -->
+      </div>
+    </div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
   </body>
 </html>

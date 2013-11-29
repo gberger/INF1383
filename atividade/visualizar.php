@@ -2,7 +2,11 @@
 
 <?php $atividades = CadVolHelper::obterAtividades( );  ?>
 
-<h1 class="title">Visualizar Atividades</h3>
+<div class="row">
+	<div class="col-md-6"><h1 class="title">Visualizar Atividades</h1></div>
+	<div class="col-md-6"><h2><a href="/atividade/cadastrar.php" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Nova Atividade</a></h2></div>
+</div>
+
 
 <div class="row well">
 	<div class="col-md-12">

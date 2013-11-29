@@ -2,7 +2,10 @@
 
 <?php $voluntarios = CadVolHelper::obterVoluntarios( ); ?>
 
-<h3 class="title">Visualizar Voluntários</h3>
+<div class="row">
+	<div class="col-md-6"><h1 class="title">Visualizar Voluntários</h1></div>
+	<div class="col-md-6"><h2><a href="/voluntario/cadastrar.php" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Novo Voluntário</a></h2></div>
+</div>
 
 <div class="row well">
 	<div class="col-md-12">

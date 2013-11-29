@@ -1,5 +1,7 @@
 $.extend( true, $.fn.dataTable.defaults, {
   "sDom": "<'row'<'col-xs-6'><'col-xs-6'f>r>t<'row'<'col-xs-3'i><'col-xs-3'l><'col-xs-6'p>>",
+  "iDisplayLength": 25,
+  "aLengthMenu": [10, 25, 50, 100, 200, 500],
   "oLanguage":
     {
       "sProcessing":   "Processando...",

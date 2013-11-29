@@ -29,18 +29,6 @@ body {
 	margin-left: -600px;
 }
 
-.form-horizontal .control-label {
-	padding-top: 15px;
-}
-
-.form-horizontal .control-group {
-	margin-bottom: 10px;
-}
-
-.btn-submit {
-	float: right;
-}
-
 .advanced-search {
 	margin-bottom: 20px;
 }

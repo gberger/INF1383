@@ -76,7 +76,14 @@
 
 		<script>
 			$(document).ready(function(){
-				$('.activities-table').dataTable();
+				$('.activities-table').dataTable({
+					aoColumnDefs: [
+						{
+							bSortable: false,
+							aTargets: [ -1, -2]
+						}
+					]
+				});
 			})
 		</script>
 		<?php endif; ?>

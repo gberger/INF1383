@@ -14,82 +14,76 @@
 	</div>
 <?php endif; ?>
 
+<div class="well">
+	<form class="form-horizontal" role="form" method="POST">
 
-<div class="jumbotron-wrapper">
-	<h3 class="title"><?php echo (!isset($_GET['codigo'])) ? 'Cadastrar' : 'Editar'; ?> Atividade</h3>
-	<div class="jumbotron">
-		<form method="POST" class="form-horizontal">
+    <input type="hidden" name="newRecord" value="<?php echo isset($_GET['codigo']) ? $_GET['codigo'] : 0; ?>">
 
-			<input type="hidden" name="newRecord" value="<?php echo (int)(!isset($_GET['codigo'])); ?>">
-
-			<div class="control-group">
-				<label class="control-label" for="inputFilial">Filial</label>
-				<div class="controls">
-					<select class="input-xlarge" id="inputFilial" name="ActivityForm[cod_filial]" required>
-						<?php
-							$filiais = CadVolHelper::obterFiliais();
-							foreach($filiais as $est=>$nome)
-								echo "<option value=\"$est\">$nome</option>";
-						?>
-					</select>
-				</div>
+		<div class="form-group">
+			<label for="inputFilial" class="col-sm-2 control-label">Filial</label>
+			<div class="col-sm-10">
+				<select name="ActivityForm[cod_filial]" id="inputFilial" class="form-control" required>
+            <?php
+              $filiais = CadVolHelper::obterFiliais();
+              foreach($filiais as $est=>$nome)
+                echo "<option value='$est'>$nome</option>";
+            ?>
+				</select>
 			</div>
+		</div>
 
-			<div class="control-group">
-				<label class="control-label" for="inputResp">Responsável</label>
-				<div class="controls">
-					<select class="input-xlarge" id="inputResp" name="ActivityForm[cpf_responsavel]">
-						<option value="">(não há)</option>
-						<?php
-							$funcionarios = CadVolHelper::obterFuncionariosParaDropdown();
-							foreach($funcionarios as $matr=>$nome)
-								echo "<option value=\"$matr\">$nome</option>";
-						?>
-					</select>
-				</div>
+		<div class="form-group">
+			<label for="inputResponsavel" class="col-sm-2 control-label">Responsavel</label>
+			<div class="col-sm-10">
+				<select name="ActivityForm[cpf_responsavel]" id="inputResponsavel" class="form-control" required>
+            <option value="">(não há)</option>
+            <?php
+              $funcionarios = CadVolHelper::obterFuncionariosParaDropdown();
+              foreach($funcionarios as $matr=>$nome)
+                echo "<option value='$matr'>$nome</option>";
+            ?>
+				</select>
 			</div>
+		</div>
 
-			<div class="control-group">
-				<label class="control-label" for="inputNome">Nome</label>
-				<div class="controls">
-					<input class="input-xlarge" type="text" id="inputNome" name="ActivityForm[nome]" required>
-				</div>
+		<div class="form-group">
+			<label for="inputNome" class="col-sm-2 control-label">Nome</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputNome" name="ActivityForm[nome]" required>
 			</div>
+		</div>
 
-
-			<div class="control-group">
-				<label class="control-label" for="inputData">Data</label>
-				<div class="controls">
-					<input class="input-medium" type="text" id="inputData" name="ActivityForm[data]" required>
-				</div>
+		<div class="form-group">
+			<label for="inputData" class="col-sm-2 control-label">Data</label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" id="inputData" name="ActivityForm[data]" required>
 			</div>
+		</div>
 
-			<div class="control-group">
-				<label class="control-label" for="inputEndereco">Endereço</label>
-				<div class="controls">
-					<textarea class="input-xxlarge" id="inputEndereco" name="ActivityForm[endereco]" required></textarea>
-				</div>
+		<div class="form-group">
+			<label for="inputEndereco" class="col-sm-2 control-label">Endereço</label>
+			<div class="col-sm-10">
+         <textarea class="form-control" id="inputEndereco" name="ActivityForm[endereco]" required></textarea>
 			</div>
+		</div>
 
-			<div class="control-group">
-				<label class="control-label" for="inputEndereco">Descrição</label>
-				<div class="controls">
-					<textarea class="input-xxlarge" id="inputEndereco" name="ActivityForm[descricao]" required></textarea>
-				</div>
+		<div class="form-group">
+			<label for="inputDescricao" class="col-sm-2 control-label">Descriçao</label>
+			<div class="col-sm-10">
+         <textarea class="form-control" id="inputDescricao" name="ActivityForm[descricao]" required></textarea>
 			</div>
+		</div>
 
-			
-			<br>
-			<button type="submit" class="btn btn-success btn-submit">
-				Enviar
-			</button>
-		</form>
-	</div>
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-2">
+				<button type="submit" class="btn btn-success">Enviar</button>
+			</div>
+		</div>
+
+	</form>
 </div>
 
 <script>
-	$("#inputData").mask("99/99/9999");
-
 	<?php if(is_array($handlerReturn)): ?>
 		var attributes = <?php echo json_encode($handlerReturn); ?>
 

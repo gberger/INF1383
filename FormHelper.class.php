@@ -42,7 +42,7 @@ class FormHelper {
 				$insert = "INSERT INTO atividade VALUES ( DEFAULT, ";
 				foreach ($_POST['ActivityForm'] as $attr => $value) {
 					if($attr == 'data')
-						$value = DateTime::createFromFormat('d/m/Y',$value)->format('Y-m-d');
+						$value = DateTime::createFromFormat('Y-m-d',$value)->format('Y-m-d');
 
 					if($value != NULL && $value != '')
 						$insert .= "'".pg_escape_string($value)."'";

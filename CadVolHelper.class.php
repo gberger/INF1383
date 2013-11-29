@@ -110,13 +110,45 @@
 			$dbconn = new SqlManager();
 			$sql = "SELECT atividade.codigo, atividade.data, atividade.nome, atividade.endereco, COUNT(participacao.cpf) as totalvol ";
 			$sql .= "FROM atividade LEFT OUTER JOIN participacao ON atividade.codigo = participacao.cod_ativ";
-			if(isset($_GET['data'])) {
+			
+			$where = array();
+
+			if(isset($_GET['data']) && $_GET['data'] !== '') {
 				$datetime = DateTime::createFromFormat('d/m/Y',$_GET['data']);
 				if($datetime != NULL) {
 					$data = $datetime->format('Y-m-d');
-					$sql .= " WHERE atividade.data = '".pg_escape_string($data)."'";
+					array_push($where, " atividade.data = '".pg_escape_string($data)."' ");
 				}
 			}
+
+			if(isset($_GET['data_inicio']) && $_GET['data_inicio'] !== '') {
+				$datetime = DateTime::createFromFormat('d/m/Y',$_GET['data_inicio']);
+				if($datetime != NULL) {
+					$data = $datetime->format('Y-m-d');
+					array_push($where, " atividade.data >= '".pg_escape_string($data)."' ");
+				}
+			}
+
+			if(isset($_GET['data_fim']) && $_GET['data_fim'] !== '') {
+				$datetime = DateTime::createFromFormat('d/m/Y',$_GET['data_fim']);
+				if($datetime != NULL) {
+					$data = $datetime->format('Y-m-d');
+					array_push($where, " atividade.data <= '".pg_escape_string($data)."' ");
+				}
+			}
+
+			if(isset($_GET['nome']) && $_GET['nome'] !== '') {
+				array_push($where, " atividade.nome ilike '%".pg_escape_string($_GET['nome'])."%' ");
+			}
+
+			if(isset($_GET['endereco']) && $_GET['endereco'] !== '') {
+				array_push($where, " atividade.endereco ilike '%".pg_escape_string($_GET['endereco'])."%' ");
+			}
+
+			if(count($where) > 0){
+				$sql .= " WHERE " . join($where, "AND");
+			}
+
 			$sql .= " GROUP BY atividade.codigo";
 			$query = $dbconn->executeRead($sql);	
 

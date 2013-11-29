@@ -1,16 +1,41 @@
 <?php require "../layout/layoutTop.php" ; ?>
 
-<?php $atividades = CadVolHelper::obterAtividades( ); ?>
+<?php $atividades = CadVolHelper::obterAtividades( ); 	?>
 
-<div class="jumbotron-wrapper">
-	<h3 class="title">Visualizar Atividades</h3>
-	<div style="float: right; position: relative; top: -40px; padding-right: 10%">
-		<form method="GET" class="form-search">
-			<input id="date-search" type="text" name="data" class="input-medium search-query" placeholder="Data" <?php if(isset($_GET['data'])) echo 'value="'.$_GET['data'].'"'; ?>>
-			<button type="submit" class="btn">Buscar</button>
-		</form>
-	</div>
-	<div class="jumbotron" style="padding-right: 30px; padding-left: 30px; position: relative; top: -55px;">
+<h1 class="title">Visualizar Atividades</h3>
+
+<div class="row well">
+	<div class="col-md-12">
+		
+		<div style="margin-bottom: 20px;">
+			
+			<h3>Busca avançada</h3>
+
+			<form method="GET" role="form">
+				<div class="row">
+					<div class="form-group col-md-2">
+						<label for="date-end-search">Data Início</label>
+						<input id="date-end-search" type="text" name="data_inicio" class="form-control" value="<?php echo isset($_GET['data_inicio']) ? $_GET['data_inicio'] : ''; ?>" placeholder="dd/mm/yyyy">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="date-search">Data Fim</label>
+						<input id="date-start-search" type="text" name="data_fim" class="form-control" value="<?php echo isset($_GET['data_fim']) ? $_GET['data_fim'] : ''; ?>" placeholder="dd/mm/yyyy">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="name-search">Nome</label>
+						<input id="name-search" type="text" name="nome" class="form-control" value="<?php echo isset($_GET['nome']) ? $_GET['nome'] : ''; ?>">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="address-search">Endereço</label>
+						<input id="address-search" type="text" name="endereco" class="form-control" value="<?php echo isset($_GET['endereco']) ? $_GET['endereco'] : ''; ?>">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Buscar</button>
+			</form>
+		</div>
+
+		<h3>Atividades encontradas</h3>
+
 		<?php if(count($atividades) == 0): ?>
 			<p>
 				Nenhum resultado encontrado.
@@ -51,14 +76,14 @@
 
 		<script>
 			$(document).ready(function(){
-				$('.activities-table').dataTable();
+				$('.activities-table').dataTable({
+  "sDom": "<'row'<'col-xs-6'><'col-xs-6'f>r>t<'row'<'col-xs-3'i><'col-xs-3'l><'col-xs-6'p>>"});
 			})
 		</script>
 		<?php endif; ?>
-
 	</div>
 </div>
-
+	
 <script>
 	$("#date-search").mask("99/99/9999");
 </script>

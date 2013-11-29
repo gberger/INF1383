@@ -14,7 +14,6 @@
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.css" rel="stylesheet">
     <link href="/assets/css/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="/assets/css/form.css" rel="stylesheet">
     <link href="/assets/css/main.css" rel="stylesheet">
 
     <script src="/assets/js/jquery.min.js"></script>

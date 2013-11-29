@@ -15,11 +15,11 @@
 				<div class="row">
 					<div class="form-group col-md-2">
 						<label for="date-end-search">Data Início</label>
-						<input id="date-end-search" type="date" name="data_inicio" class="form-control" value="<?php echo isset($_GET['data_inicio']) ? $_GET['data_inicio'] : ''; ?>" placeholder="dd/mm/yyyy">
+						<input id="date-end-search" type="date" name="data_inicio" class="form-control" value="<?php echo isset($_GET['data_inicio']) ? $_GET['data_inicio'] : ''; ?>" placeholder="yyyy-mm-dd">
 					</div>
 					<div class="form-group col-md-2">
 						<label for="date-search">Data Fim</label>
-						<input id="date-start-search" type="date" name="data_fim" class="form-control" value="<?php echo isset($_GET['data_fim']) ? $_GET['data_fim'] : ''; ?>" placeholder="dd/mm/yyyy">
+						<input id="date-start-search" type="date" name="data_fim" class="form-control" value="<?php echo isset($_GET['data_fim']) ? $_GET['data_fim'] : ''; ?>" placeholder="yyyy-mm-dd">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="name-search">Nome</label>

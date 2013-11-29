@@ -6,12 +6,28 @@
 
 	class CadVolHelper
 	{
+		private static $alerts = array();
+
 		public static function redirect( $uri )
 		{
 			header("Location: http://".$_SERVER['HTTP_HOST'].$uri);
 			die();
 		}
 
+		/*
+			http://getbootstrap.com/components/#alerts
+			level: success, info, warning, danger
+		*/
+		public static function addAlert( $message, $level )
+		{
+			array_push(self::$alerts, array('message' => $message, 'level' => $level));
+			return self::$alerts;
+		}
+
+		public static function getAlerts( )
+		{
+			return self::$alerts;
+		}
 
 		public static function handleLogin( )
 		{
@@ -98,8 +114,29 @@
 		{
 			$dbconn = new SqlManager();
 			$sql = "SELECT * FROM voluntario";
-			if(isset($_GET['cpf']) && $_GET['cpf'] !== '')
-				$sql .= " WHERE cpf = '".pg_escape_string($_GET['cpf'])."'";
+
+			$where = array();
+
+			if(isset($_GET['cpf']) && $_GET['cpf'] !== ''){
+				array_push($where, " cpf like '%".pg_escape_string($_GET['cpf'])."%' ");
+			}
+
+			if(isset($_GET['nome']) && $_GET['nome'] !== ''){
+				array_push($where, " nome ilike '%".pg_escape_string($_GET['nome'])."%' ");
+			}
+
+			if(isset($_GET['telefone']) && $_GET['telefone'] !== ''){
+				array_push($where, " (cast(tel1 as text) like '%".pg_escape_string($_GET['telefone'])."%' OR cast(tel2 as text) like '%".pg_escape_string($_GET['telefone'])."%') ");
+			}
+
+			if(isset($_GET['email']) && $_GET['email'] !== ''){
+				array_push($where, " email ilike '%".pg_escape_string($_GET['email'])."%' ");
+			}
+
+			if(count($where) > 0){
+				$sql .= " WHERE " . join($where, "AND");
+			}
+
 			$query = $dbconn->executeRead($sql);
 
 			return $query->fetchAll();

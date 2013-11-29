@@ -1,6 +1,6 @@
 <?php require "../layout/layoutTop.php" ; ?>
 
-<?php $atividades = CadVolHelper::obterAtividades( ); 	?>
+<?php $atividades = CadVolHelper::obterAtividades( );  ?>
 
 <h1 class="title">Visualizar Atividades</h3>
 

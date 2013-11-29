@@ -2,15 +2,40 @@
 
 <?php $voluntarios = CadVolHelper::obterVoluntarios( ); ?>
 
-<div class="jumbotron-wrapper">
-	<h3 class="title">Visualizar Voluntários</h3>
-	<div style="float: right; position: relative; top: -40px; padding-right: 10%">
-		<form method="GET" class="form-search">
-			<input type="text" name="cpf" class="input-medium search-query" placeholder="CPF" <?php if(isset($_GET['cpf'])) echo 'value="'.$_GET['cpf'].'"'; ?>>
-			<button type="submit" class="btn">Buscar</button>
-		</form>
-	</div>
-	<div class="jumbotron" style="padding-right: 30px; padding-left: 30px; position: relative; top: -55px;">
+<h3 class="title">Visualizar Voluntários</h3>
+
+<div class="row well">
+	<div class="col-md-12">
+		
+		<div class="advanced-search">
+			
+			<h3>Busca avançada</h3>
+
+			<form method="GET" role="form" novalidate>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="cpf-search">CPF</label>
+						<input id="cpf-search" type="tel" name="cpf" class="form-control" value="<?php echo isset($_GET['cpf']) ? $_GET['cpf'] : ''; ?>" placeholder="12345678900">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="name-search">Nome</label>
+						<input id="name-search" type="text" name="nome" class="form-control" value="<?php echo isset($_GET['nome']) ? $_GET['nome'] : ''; ?>">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="telephone-search">Telefone</label>
+						<input id="telephone-search" type="tel" name="telefone" class="form-control" value="<?php echo isset($_GET['telefone']) ? $_GET['telefone'] : ''; ?>">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="email-search">Email</label>
+						<input id="email-search" type="email" name="email" class="form-control" value="<?php echo isset($_GET['email']) ? $_GET['email'] : ''; ?>">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Buscar</button>
+			</form>			
+		</div>
+	
+		<h3>Atividades encontradas</h3>
+
 		<?php if(count($voluntarios) == 0): ?>
 			<p>
 				Nenhum resultado encontrado.
@@ -51,11 +76,18 @@
 
 		<script>
 			$(document).ready(function(){
-				$('.volunteers-table').dataTable();
+				$('.volunteers-table').dataTable({
+					aoColumnDefs: [
+						{
+							bSortable: false,
+							aTargets: [ -1, -2 ]
+						}
+					]
+				});
 			})
 		</script>
 		<?php endif; ?>
-
+		
 	</div>
 </div>
 

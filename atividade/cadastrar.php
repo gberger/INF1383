@@ -14,6 +14,8 @@
 	</div>
 <?php endif; ?>
 
+<h3>Cadastro de Atividade</h3>
+
 <div class="well">
 	<form class="form-horizontal" role="form" method="POST">
 

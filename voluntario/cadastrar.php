@@ -198,14 +198,13 @@
 </div>
 
 <script>
-	$("#inputCpf").mask("99999999999");
-	$("#inputDataNasc").mask("99/99/9999");
 
 	<?php if(is_array($handlerReturn)): ?>
 		var attributes = <?php echo json_encode($handlerReturn); ?>
 
 		jQuery.each(attributes, function(i, value) {
 			$('[name="VolunteerForm['+i+']"]').val(value);
+			console.log(value);
 		});		
 	<?php endif; ?>
 </script>

@@ -51,8 +51,8 @@
 					<th style="width: 40%">Nome</th>
 					<th style="width: 20%">Telefone</th>
 					<th style="width: 20%">E-mail</th>
-					<th style="width: 20px">Ver</th>
 					<th style="width: 20px">Editar</th>
+					<th style="width: 20px">Fluência</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,13 +63,13 @@
 						<td><?php echo $voluntario['tel1']; ?></td>
 						<td><?php echo $voluntario['email']; ?></td>
 						<td>
-							<a href="/voluntario/ver-um.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
-								<span class="glyphicon glyphicon-eye-open"></span>
+							<a href="/voluntario/cadastrar.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
 						</td>
 						<td>
-							<a href="/voluntario/cadastrar.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
-								<span class="glyphicon glyphicon-pencil"></span>
+							<a href="/voluntario/fluencia.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
+								<span class="glyphicon glyphicon-comment"></span>
 							</a>
 						</td>
 					</tr>

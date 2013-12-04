@@ -98,4 +98,9 @@ CREATE TABLE participacao (
 	CONSTRAINT CK_Participacao_Horas check( horas_trab between 1 and 8 )
 );
 
+CREATE VIEW voluntario AS
+SELECT * FROM pessoa p WHERE NOT EXISTS(
+	SELECT * FROM funcionario f WHERE f.cpf = p.cpf
+)
+
 

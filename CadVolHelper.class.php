@@ -41,7 +41,7 @@
 			if(isset($_POST['username']))
 			{
 				$dbconn = new SqlManager();
-				$sql = "SELECT * FROM funcionario NATURAL JOIN voluntario WHERE username = '".pg_escape_string($_POST['username'])."';";
+				$sql = "SELECT * FROM funcionario NATURAL JOIN pessoa WHERE username = '".pg_escape_string($_POST['username'])."';";
 				$query = $dbconn->executeRead($sql);
 
 				$user = $query->fetch();
@@ -195,11 +195,30 @@
 		public static function obterParticipantes( )
 		{
 			$dbconn = new SqlManager();
-			$sql = "SELECT * FROM participacao LEFT JOIN voluntario ON participacao.cpf_vol = voluntario.cpf ";
+			$sql = "SELECT * FROM participacao NATURAL JOIN voluntario ";
 			$sql .= "WHERE participacao.cod_ativ = '".pg_escape_string($_GET['codigo'])."';";
 			$query = $dbconn->executeRead($sql);
 			
 			return $query->fetchAll();
+		}
+
+
+		public static function obterVoluntariosParaDropdown( $idAtividade = NULL )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT * FROM voluntario ";
+			if($idAtividade != NULL) {
+				$sql .= "WHERE cpf NOT IN (SELECT cpf FROM participacao WHERE cod_ativ = $idAtividade) ";
+			}
+			$sql .= "ORDER BY nome;";
+			$query = $dbconn->executeRead($sql);
+
+			$nomes = array();
+			foreach($query as $row) {
+				$nomes[$row['cpf']] = $row['nome'];
+			}
+
+			return $nomes;
 		}
 
 	}

@@ -97,7 +97,7 @@
 		public static function obterFuncionariosParaDropdown( )
 		{
 			$dbconn = new SqlManager();
-			$sql = "SELECT * FROM funcionario NATURAL INNER JOIN voluntario ORDER BY nome";
+			$sql = "SELECT * FROM funcionario NATURAL INNER JOIN pessoa ORDER BY nome";
 			$query = $dbconn->executeRead($sql);
 
 			$filiais = self::obterFiliais();

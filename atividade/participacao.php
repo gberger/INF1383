@@ -117,6 +117,10 @@
 			$('[name="ParticipationForm['+i+']"]').val(value);
 		});		
 	<?php endif; ?>
+
+	$(document).ready(function(){
+		$('#inputCpf').chosen()
+	})
 </script>
 
 

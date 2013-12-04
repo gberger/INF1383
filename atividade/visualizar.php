@@ -52,8 +52,8 @@
 					<th style="width: 32%">Nome</th>
 					<th style="width: 32%">Endereço</th>
 					<th style="width: 12%">Total Vol.</th>
-					<th style="width: 20px">Ver</th>
 					<th style="width: 20px">Editar</th>
+					<th style="width: 20px">Participantes</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -64,13 +64,13 @@
 						<td><?php echo $atividade['endereco']; ?></td>
 						<td><?php echo $atividade['totalvol']; ?></td>
 						<td>
-							<a href="/atividade/participacao.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
-								<span class="glyphicon glyphicon-eye-open"></span>
+							<a href="/atividade/cadastrar.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
 						</td>
 						<td>
-							<a href="/atividade/cadastrar.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
-								<span class="glyphicon glyphicon-pencil"></span>
+							<a href="/atividade/participacao.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
+								<span class="fa fa-users"></span>
 							</a>
 						</td>
 					</tr>

@@ -207,6 +207,10 @@
 			console.log(value);
 		});		
 	<?php endif; ?>
+	
+	$(document).ready(function(){
+		$('select').chosen()
+	})
 </script>
 
 <?php require "../layout/layoutBottom.php" ; ?>

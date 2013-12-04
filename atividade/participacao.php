@@ -119,7 +119,7 @@
 	<?php endif; ?>
 
 	$(document).ready(function(){
-		$('#inputCpf').chosen()
+		$('select').chosen()
 	})
 </script>
 

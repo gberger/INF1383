@@ -67,7 +67,7 @@
                     <input class="form-control" type="text" name="username" placeholder="Nome de usu&aacute;rio" required autofocus>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    <input class="form-control" type="password" name="password" placeholder="Senha" required>
                   </div>
                   <div class="checkbox">
                     <label>

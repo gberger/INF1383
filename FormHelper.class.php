@@ -201,11 +201,14 @@ class FormHelper {
 	public static function handleConfigForm( )
 	{
 		if(isset($_POST['newPassword'])){
-			if($_SESSION['funcionario']['password'] !== $_POST['oldPassword'] || $_POST['newPassword'] !== $_POST['newPassword2']){
+			if(trim($_SESSION['funcionario']['password']) !== $_POST['oldPassword'] || $_POST['newPassword'] !== $_POST['newPassword2']){
 				return false;
 			} else {
-				// update
-				return true;
+				$sql = "UPDATE funcionario SET password = '".pg_escape_string($_POST['newPassword'])."' ";
+				$sql .= "WHERE cpf = ".$_SESSION['funcionario']['cpf']." AND password = '".pg_escape_string($_POST['oldPassword'])."'";
+				$dbconn = new SqlManager();
+				$command = $dbconn->executeCommand($sql);
+				return ($command == 1);
 			}
 		}
 	}

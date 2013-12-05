@@ -167,6 +167,18 @@ class FormHelper {
 		return true;
 	}
 
+	public static function handleConfigForm( )
+	{
+		if(isset($_POST['newPassword'])){
+			if($_SESSION['funcionario']['password'] !== $_POST['oldPassword'] || $_POST['newPassword'] !== $_POST['newPassword2']){
+				return false;
+			} else {
+				// update
+				return true;
+			}
+		}
+	}
+
 }
 
 ?>

@@ -35,7 +35,7 @@
 		  <ul class="nav navbar-nav">
 		    <!-- <li class="active"><a href="#">Link</a></li> -->
 		    <li class="dropdown">
-		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Voluntários <b class="caret"></b></a>
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Voluntários <b class="caret"></b></a>
 		      <ul class="dropdown-menu">
 		        <li><a href="/voluntario/cadastrar.php">Cadastrar</a></li>
 		        <li><a href="/voluntario/visualizar.php">Visualizar</a></li>
@@ -43,20 +43,24 @@
 		    </li>
 		    
 		    <li class="dropdown">
-		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Atividades <b class="caret"></b></a>
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-calendar"></i> Atividades <b class="caret"></b></a>
 		      <ul class="dropdown-menu">
 		        <li><a href="/atividade/cadastrar.php">Cadastrar</a></li>
 		        <li><a href="/atividade/visualizar.php">Visualizar</a></li>
 		      </ul>
 		    </li>
 
-        <li><a href="/estatisticas.php">Estatísticas e Relatórios</a></li>
+        <li><a href="/estatisticas.php"><i class="fa fa-dashboard"></i> Estatísticas e Relatórios</a></li>
 		  </ul>
 
 		  <ul class="nav navbar-nav navbar-right">
-		    <li><div style=" padding: 15px"><?php echo $_SESSION['funcionario']['nome'];?></div></li>
-		    <li><a style="padding-left: 5px; padding-right: 5px;" href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
-		    <li><a href="/login.php?action=logout">Sair</a></li>
+		    <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['funcionario']['nome'];?> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/configuracoes.php"><i class="glyphicon glyphicon-cog fa-fw"></i> Configuracoes</a></li>
+            <li><a href="/login.php?action=logout"><i class="fa fa-sign-out fa-fw"> </i>Sair</a></li>
+          </ul>
+        </li>
 		</div>
     
 	</div>

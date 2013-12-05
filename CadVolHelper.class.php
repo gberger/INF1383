@@ -191,7 +191,7 @@
 				$sql .= " WHERE " . join($where, "AND");
 			}
 
-			$sql .= " GROUP BY atividade.codigo";
+			$sql .= " GROUP BY atividade.codigo, atividade.data, atividade.nome, atividade.endereco";
 			$query = $dbconn->executeRead($sql);	
 
 			return $query->fetchAll();

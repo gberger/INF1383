@@ -60,3 +60,17 @@ $$ LANGUAGE PLPGSQL;
 
 CREATE TRIGGER validacao_CPF BEFORE INSERT OR UPDATE OF cpf ON pessoa
 FOR EACH ROW EXECUTE PROCEDURE cpf_validar( );
+
+CREATE OR REPLACE FUNCTION tels_diferentes( ) RETURNS trigger AS $$
+DECLARE
+BEGIN
+  IF new.tel1 = new.tel2 THEN
+    RAISE EXCEPTION 'telefones devem ser diferentes';
+    RETURN NULL;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER telefones_diferentes BEFORE INSERT OR UPDATE ON pessoa
+FOR EACH ROW EXECUTE PROCEDURE tels_diferentes( );

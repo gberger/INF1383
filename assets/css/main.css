@@ -33,6 +33,10 @@ body {
 	margin-bottom: 20px;
 }
 
+.volunteers-table {
+	width: 100%;
+}
+
 .volunteers-table th,td {
 	/*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 	margin-bottom: 2px;

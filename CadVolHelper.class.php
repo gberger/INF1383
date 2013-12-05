@@ -1,5 +1,10 @@
 <?php
 
+	if(strpos('public_html', dirname(__FILE__)) !== FALSE) // Verifica se está no labbio (para correção de links)
+		define( "URL_PREFIX", "/~bd1grupo15");
+	else
+		define( "URL_PREFIX", "");
+
 	require_once "SqlManager.class.php";
 	require_once "FormHelper.class.php";
 	session_start();
@@ -198,7 +203,17 @@
 			$sql = "SELECT * FROM participacao NATURAL JOIN voluntario ";
 			$sql .= "WHERE participacao.cod_ativ = '".pg_escape_string($_GET['codigo'])."';";
 			$query = $dbconn->executeRead($sql);
-			
+
+			return $query->fetchAll();
+		}
+
+		public static function obterFluencias( )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT * FROM fala f INNER JOIN lingua l ON f.cod_ling = l.codigo ";
+			$sql .= "WHERE f.cpf = '".pg_escape_string($_GET['cpf'])."';";
+			$query = $dbconn->executeRead($sql);
+
 			return $query->fetchAll();
 		}
 
@@ -216,6 +231,24 @@
 			$nomes = array();
 			foreach($query as $row) {
 				$nomes[$row['cpf']] = $row['nome'];
+			}
+
+			return $nomes;
+		}
+
+		public static function obterIdiomasParaDropdown( $cpf = NULL )
+		{
+			$dbconn = new SqlManager();
+			$sql = "SELECT codigo, nome||' ('||dialeto||')' AS label FROM lingua ";
+			if($cpf != NULL) {
+				$sql .= "WHERE codigo NOT IN (SELECT cod_ling FROM fala WHERE cpf = $cpf) ";
+			}
+			$sql .= "ORDER BY nome;";
+			$query = $dbconn->executeRead($sql);
+
+			$nomes = array();
+			foreach($query as $row) {
+				$nomes[$row['codigo']] = $row['label'];
 			}
 
 			return $nomes;

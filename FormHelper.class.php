@@ -167,6 +167,37 @@ class FormHelper {
 		return true;
 	}
 
+	public static function handleFluenceForm( )
+	{
+
+		if(isset($_POST['FluenceForm'])) {
+			$insert = "INSERT INTO fala VALUES (";
+			foreach ($_POST['FluenceForm'] as $attr => $value) {
+
+				if($value != NULL && $value != '')
+					$insert .= "'".pg_escape_string($value)."'";
+				else
+					$insert .= "NULL";
+
+				if($attr != 'nivel')
+					$insert .= ", ";
+			}
+			$insert .= ");";
+
+			//var_dump($insert);
+
+			$dbconn = new SqlManager();
+			$command = $dbconn->executeCommand($insert);
+			//var_dump($dbconn->conn->errorInfo());
+			if($command == 1)
+				return true;
+			else
+				return $_POST['ParticipationForm'];
+		}
+
+		return true;
+	}
+
 	public static function handleConfigForm( )
 	{
 		if(isset($_POST['newPassword'])){

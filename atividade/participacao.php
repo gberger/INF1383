@@ -4,7 +4,7 @@
 	if(isset($_GET['remover'])) {
 		$dbconn = new SqlManager();
 		$sql = "DELETE FROM participacao WHERE cod_ativ='".pg_escape_string($_GET['codigo']);
-		$sql .= "' AND cpf_vol='".pg_escape_string($_GET['remover'])."';";
+		$sql .= "' AND cpf='".pg_escape_string($_GET['remover'])."';";
 		$dbconn->executeCommand($sql);
 		CadVolHelper::redirect('/atividade/participacao.php?codigo='.$_GET['codigo']);
 	}
@@ -71,7 +71,6 @@
 				<label for="inputCpf" class="col-sm-2 control-label">Participante</label>
 				<div class="col-sm-10">
 					<select name="ParticipationForm[cpf]" id="inputCpf" class="form-control" required>
-	            <option value="">(não há)</option>
 	            <?php
 	              $funcionarios = CadVolHelper::obterVoluntariosParaDropdown($_GET['codigo']);
 	              foreach($funcionarios as $cpf=>$nome)

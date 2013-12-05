@@ -49,6 +49,8 @@
 		        <li><a href="/atividade/visualizar.php">Visualizar</a></li>
 		      </ul>
 		    </li>
+
+        <li><a href="/estatisticas.php">Estatísticas e Relatórios</a></li>
 		  </ul>
 
 		  <ul class="nav navbar-nav navbar-right">

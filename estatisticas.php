@@ -37,7 +37,7 @@ require_once "StatsHelper.class.php" ;
   </div>
 </div>
 
-<script src="/assets/js/highcharts.js"></script>
+<script src="<?php echo URL_PREFIX; ?>/assets/js/highcharts.js"></script>
 <script>
   $(document).ready(function(){
     $('#chart1').highcharts({

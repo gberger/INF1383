@@ -15,7 +15,7 @@ CREATE OR REPLACE FUNCTION cpf_validar( ) RETURNS trigger AS $$
 	IF char_length(val_par_cpf) = 11 THEN
 	ELSE
 	RAISE NOTICE 'Formato inválido: %',$1;
-	RETURN 0;
+	RETURN NULL;
 	END IF;
 	-- Inicialização
 	x := 0;
@@ -58,7 +58,7 @@ CREATE OR REPLACE FUNCTION cpf_validar( ) RETURNS trigger AS $$
 	END;
 $$ LANGUAGE PLPGSQL;
 
-CREATE TRIGGER validacao_CPF BEFORE INSERT OR UPDATE OF cpf ON pessoa
+CREATE TRIGGER validacao_CPF BEFORE INSERT OR UPDATE ON pessoa
 FOR EACH ROW EXECUTE PROCEDURE cpf_validar( );
 
 CREATE OR REPLACE FUNCTION tels_diferentes( ) RETURNS trigger AS $$

@@ -28,7 +28,7 @@
 			if(URL_PREFIX != '') {
 				$name = 'db60';
 				$user = 'bd1grupo15';
-				$user = 'bd1grupo15./123';
+				$pass = 'bd1grupo15./123';
 			}
 			
 			try

@@ -35,6 +35,8 @@ CREATE TABLE pessoa
 	CONSTRAINT FK_Pessoa_Sigla_Emissor FOREIGN KEY(sigla_emissor) REFERENCES emissor_rg(sigla) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
+CREATE INDEX index_email ON pessoa(email);
+
 CREATE TABLE filial
 (
   codigo SERIAL NOT NULL,
@@ -55,6 +57,8 @@ CREATE TABLE funcionario
 	CONSTRAINT FK_Funcionario_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+CREATE UNIQUE INDEX index_un_username ON funcionario(username);
+
 
 CREATE TABLE atividade (
 	codigo SERIAL NOT NULL,
@@ -68,6 +72,8 @@ CREATE TABLE atividade (
 	CONSTRAINT FK_Atividade_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
 	CONSTRAINT FK_Atividade_Cod_Responsavel FOREIGN KEY(cpf_responsavel) REFERENCES pessoa(cpf) ON DELETE SET NULL ON UPDATE CASCADE
 );
+CREATE INDEX index_ativ_data ON atividade(data);
+
 
 CREATE TABLE lingua (
 	codigo SERIAL NOT NULL,

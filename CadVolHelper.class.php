@@ -1,6 +1,6 @@
 <?php
 
-	if(strpos('public_html', dirname(__FILE__)) !== FALSE) // Verifica se está no labbio (para correção de links)
+	if(strpos( dirname(__FILE__), 'public_html') !== FALSE) // Verifica se está no labbio (para correção de links)
 		define( "URL_PREFIX", "/~bd1grupo15");
 	else
 		define( "URL_PREFIX", "");

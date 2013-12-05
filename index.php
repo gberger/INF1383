@@ -12,20 +12,31 @@
     <div class="col-md-4">
       <h2>Voluntários</h2>
       <p>Nesta área é possível cadastrar novos voluntários, além de visualizar e alterar os já cadastrados.</p>
-      <p><a class="btn btn-default btn-primary" href="/voluntario/cadastrar.php" role="button">Cadastrar &raquo;</a></p>
-      <p><a class="btn btn-default btn-success" href="/voluntario/visualizar.php" role="button">Visualizar &raquo;</a></p>
+      <div class="row">
+        <div class="col-md-6">
+          <a class="btn btn-default btn-primary btn-block" href="/voluntario/cadastrar.php" role="button">Cadastrar &raquo;</a>
+        </div>
+        <div class="col-md-6">
+          <a class="btn btn-default btn-success btn-block" href="/voluntario/visualizar.php" role="button">Visualizar &raquo;</a>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
       <h2>Atividades</h2>
       <p>Registre aqui as atividades promovidas pela Cruz Vermelha Brasileira.</p>
-      <p><a class="btn btn-default btn-primary" href="/atividade/cadastrar.php" role="button">Cadastrar &raquo;</a></p>
-      <p><a class="btn btn-default btn-success" href="/atividade/visualizar.php" role="button">Visualizar &raquo;</a></p>
+      <div class="row">
+        <div class="col-md-6">
+          <a class="btn btn-default btn-primary btn-block" href="/atividade/cadastrar.php" role="button">Cadastrar &raquo;</a>
+        </div>
+        <div class="col-md-6">
+          <a class="btn btn-default btn-success btn-block" href="/atividade/visualizar.php" role="button">Visualizar &raquo;</a>
+        </div>
+      </div>
    </div>
     <div class="col-md-4">
-      <h2>Participações</h2>
-      <p>Associe voluntários às atividades de que participou!</p>
-      <p><a class="btn btn-default btn-primary" href="/participacao/cadastrar.php" role="button">Cadastrar &raquo;</a></p>
-      <p><a class="btn btn-default btn-success" href="/participacao/visualizar.php" role="button">Visualizar &raquo;</a></p>
+      <h2>Estatísticas</h2>
+      <p>Acesse estatísticas e relatórios sobre os dados de voluntários e atividades cadastrados no sistema.</p>
+      <p><a class="btn btn-default btn-warning btn-block" href="/estatisticas.php" role="button">Acessar &raquo;</a></p>
     </div>
   </div>
 

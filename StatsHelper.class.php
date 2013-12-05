@@ -35,6 +35,20 @@
       return $idades;
     }
 
+    public static function obterSegmentosDeEscolaridadeDeVoluntarios( )
+    {
+      $dbconn = new SqlManager();
+      $sql = "SELECT formacao, count(*) FROM voluntario GROUP BY formacao;";
+      $query = $dbconn->executeRead($sql);
+
+      $dados = array();
+      foreach($query as $row) {
+        array_push($dados, array($row['formacao'], $row['count']));
+      }
+
+      return $dados;
+    }
+
     public static function obterAtividadesPorFilial( )
     {
       $dbconn = new SqlManager();
@@ -58,6 +72,20 @@
       $dados = array();
       foreach($query as $row) {
         array_push($dados, array($row['estado'], $row['num_funcionarios']));
+      }
+
+      return $dados; 
+    }
+
+    public static function obterLinguasENiveis( )
+    {
+      $dbconn = new SqlManager();
+      $sql = "SELECT nome, nivel, count(*) FROM fala INNER JOIN lingua ON codigo = cod_ling GROUP BY nome, nivel;";
+      $query = $dbconn->executeRead($sql);
+
+      $dados = array();
+      foreach($query as $row) {
+        array_push($dados, array($row['nome'], $row['nivel'], $row['count']));
       }
 
       return $dados; 

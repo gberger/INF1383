@@ -17,6 +17,14 @@ require_once "StatsHelper.class.php" ;
       <h2>Distribuição de Voluntários por Idade</h2>
       <div id="chart3"></div>
     </div>
+    <div class="col-md-6">
+      <h2>Distribuição de Voluntários por Escolaridade</h2>
+      <div id="chart4"></div>
+    </div>
+    <div class="col-md-12">
+      <h2>Línguas Faladas pelos Voluntários</h2>
+      <div id="chart5"></div>
+    </div>
   </div>
 </div>
 
@@ -44,7 +52,7 @@ require_once "StatsHelper.class.php" ;
       },
       series: [{
         type: 'pie',
-        name: 'Browser share',
+        name: 'Atividades',
         data: <?php echo json_encode(StatsHelper::obterAtividadesPorFilial()) ?>
       }]
     });
@@ -70,7 +78,7 @@ require_once "StatsHelper.class.php" ;
       },
       series: [{
         type: 'pie',
-        name: 'Browser share',
+        name: 'Funcionários',
         data: <?php echo json_encode(StatsHelper::obterFuncionariosPorFilial()) ?>
       }]
     });
@@ -96,12 +104,110 @@ require_once "StatsHelper.class.php" ;
       },
       series: [{
         type: 'pie',
-        name: 'Browser share',
+        name: 'Voluntários',
         data: <?php echo json_encode(StatsHelper::obterSegmentosDeIdadeDeVoluntarios()) ?>
       }]
     });
 
+    $('#chart4').highcharts({
+      title: {
+        text: ''
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            color: '#000000',
+            connectorColor: '#000000',
+            format: '<b>{point.name}</b>: {point.y}'
+          }
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: 'Voluntários',
+        data: <?php echo json_encode(StatsHelper::obterSegmentosDeEscolaridadeDeVoluntarios()) ?>
+      }]
+    });
+
+    var vals = <?php echo json_encode(StatsHelper::obterLinguasENiveis()) ?>;
+
+    var languages = vals.reduce(function(prev, curr){
+      if(prev.indexOf(curr[0]) == -1){
+        prev.push(curr[0]);
+      }
+      return prev;
+    }, []);
+
+    var series = [{
+      name: 'iniciante',
+      data: languages.map(function(l){
+        var i;
+        for(i=0; i<vals.length; i++){
+          if(vals[i][0] == l && vals[i][1] == 'iniciante'){
+            return vals[i][2];
+          }
+        }
+        return 0;
+      })
+    }, {
+      name: 'medio',
+      data: languages.map(function(l){
+        var i;
+        for(i=0; i<vals.length; i++){
+          if(vals[i][0] == l && vals[i][1] == 'medio'){
+            return vals[i][2];
+          }
+        }
+        return 0;
+      })
+    }, {
+      name: 'fluente',
+      data: languages.map(function(l){
+        var i;
+        for(i=0; i<vals.length; i++){
+          if(vals[i][0] == l && vals[i][1] == 'fluente'){
+            return vals[i][2];
+          }
+        }
+        return 0;
+      })
+    }]
+
+    $('#chart5').highcharts({
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: ''
+      },
+      xAxis: {
+        categories: languages
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Total fruit consumption'
+        }
+      },
+      legend: {
+        backgroundColor: '#FFFFFF',
+        reversed: true
+      },
+      plotOptions: {
+        series: {
+          stacking: 'normal'
+        }
+      },
+      series: series
+    });
   }); //doc.ready
+
 </script>    
 
 <?php require "layout/layoutBottom.php" ; ?>

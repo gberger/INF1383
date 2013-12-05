@@ -36,6 +36,7 @@ require_once "StatsHelper.class.php" ;
 <script>
   $(document).ready(function(){
     $('#chart1').highcharts({
+      credits: {enabled: false},
       title: {
         text: ''
       },
@@ -62,6 +63,7 @@ require_once "StatsHelper.class.php" ;
     });
 
     $('#chart2').highcharts({
+      credits: {enabled: false},
       title: {
         text: ''
       },
@@ -88,6 +90,7 @@ require_once "StatsHelper.class.php" ;
     });
 
     $('#chart3').highcharts({
+      credits: {enabled: false},
       title: {
         text: ''
       },
@@ -114,6 +117,7 @@ require_once "StatsHelper.class.php" ;
     });
 
     $('#chart4').highcharts({
+      credits: {enabled: false},
       title: {
         text: ''
       },
@@ -184,6 +188,7 @@ require_once "StatsHelper.class.php" ;
     }]
 
     $('#chart5').highcharts({
+      credits: {enabled: false},
       chart: {
         type: 'bar'
       },
@@ -196,8 +201,9 @@ require_once "StatsHelper.class.php" ;
       yAxis: {
         min: 0,
         title: {
-          text: 'Total fruit consumption'
-        }
+          text: 'Voluntários'
+        },
+        allowDecimals: false
       },
       legend: {
         backgroundColor: '#FFFFFF',
@@ -214,6 +220,7 @@ require_once "StatsHelper.class.php" ;
     var vals = <?php echo json_encode(StatsHelper::obterAtivPorFilialMes()); ?>;
 
     $('#chart6').highcharts({
+      credits: {enabled: false},
       title: {
         text: '',
       },
@@ -222,13 +229,15 @@ require_once "StatsHelper.class.php" ;
       },
       yAxis: {
         title: {
-          text: 'Temperature (°C)'
+          text: 'Quantidade de Atividades'
         },
         plotLines: [{
           value: 0,
           width: 1,
           color: '#808080'
-        }]
+        }],
+        min: 0,
+        allowDecimals: false
       },
       legend: {
         layout: 'vertical',

@@ -38,7 +38,7 @@ CREATE TABLE pessoa
 CREATE TABLE filial
 (
   codigo SERIAL NOT NULL,
-  estado char(40) NOT NULL,
+  estado char(40) NOT NULL CONSTRAINT UNIQ_Filial_Estado UNIQUE,
   endereco varchar(200) NOT NULL,
   CONSTRAINT PK_Filial_Codigo PRIMARY KEY(codigo)
 );

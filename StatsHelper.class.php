@@ -74,7 +74,48 @@
         array_push($dados, array($row['estado'], $row['num_funcionarios']));
       }
 
-      return $dados; 
+      return $dados;
+    }
+
+    public static function obterAtivPorFilialMes( )
+    {
+      $dbconn = new SqlManager();
+      $sql = "
+        SELECT (lpad(CAST(mes AS char(2)), 2, '0')||'/'||ano) AS periodo, estado, COUNT(a.codigo) AS totalAtiv
+        FROM (
+          SELECT
+            extract(month from ultimoano.mesano) as mes, extract(year from ultimoano.mesano) as ano, f.codigo, f.estado
+          FROM ( 
+            SELECT CURRENT_DATE - (cast( s.m||' month' as interval)) as mesano FROM generate_series(0,11) as s(m) ORDER BY mesano ASC
+          ) as ultimoano FULL OUTER JOIN filial f ON 1=1
+        ) AS filialmes LEFT OUTER JOIN atividade a ON
+          extract(month from a.data) = filialmes.mes AND
+          extract(year from a.data) = filialmes.ano AND
+          filialmes.codigo = a.cod_filial
+
+        GROUP BY mes, ano, estado
+        ORDER BY estado ASC;
+      ";
+      $query = $dbconn->executeRead($sql);
+      $resultado = $query->fetchAll();
+
+      $filiais = array_chunk($resultado, 12);
+      $periodos = array();
+      foreach($filiais[0] as $periodo) {
+        $periodos = $periodo['periodo'];
+      }
+      $series = array();
+
+      foreach($filiais as $filial) {
+        $data = array();
+        foreach($filial as $periodo) {
+          $data[] = $periodo['totalativ'];
+        }
+        $series[] = array('name'=>$filial[0]['estado'], 'data'=>$data);
+      }
+
+      return array('categories'=>$categories, 'series'=>$series);
+
     }
 
     public static function obterLinguasENiveis( )
@@ -90,6 +131,7 @@
 
       return $dados; 
     }
+
   }
 
 ?>

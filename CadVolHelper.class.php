@@ -40,7 +40,7 @@
 			if(!empty($_SESSION['active'])) {
 				if(isset($_GET['action']) && $_GET['action'] == 'logout' )
 					session_destroy();
-				self::redirect(URL_PREFIX."/index.php");
+				self::redirect("/index.php");
 			}
 
 			if(isset($_POST['username']))
@@ -55,7 +55,7 @@
 				if(trim($user['password']) == $_POST['password']) {
 					$_SESSION['funcionario'] = $user;
 					$_SESSION['active'] = true;
-					self::redirect(URL_PREFIX."/index.php");
+					self::redirect("/index.php");
 				}
 
 				return true;
@@ -67,7 +67,7 @@
 		public static function validateSession( )
 		{
 			if(empty($_SESSION['active'])) {
-				self::redirect(URL_PREFIX."/login.php");
+				self::redirect("/login.php");
 			}
 		}
 

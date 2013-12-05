@@ -24,13 +24,13 @@
 
       $rows = $query->fetch();
       $idades = array();
-      array_push($idades, array('Menores de 18 anos', $rows['i18']));
-      array_push($idades, array('De 18 a 24 anos', $rows['i1824']));
-      array_push($idades, array('De 25 a 34 anos', $rows['i2534']));
-      array_push($idades, array('De 35 a 44 anos', $rows['i3544']));
-      array_push($idades, array('De 45 a 54 anos', $rows['i4554']));
-      array_push($idades, array('De 55 a 64 anos', $rows['i5564']));
-      array_push($idades, array('65 anos ou mais', $rows['i65']));
+      array_push($idades, array('Menores de 18 anos', (int)$rows['i18']));
+      array_push($idades, array('De 18 a 24 anos', (int)$rows['i1824']));
+      array_push($idades, array('De 25 a 34 anos', (int)$rows['i2534']));
+      array_push($idades, array('De 35 a 44 anos', (int)$rows['i3544']));
+      array_push($idades, array('De 45 a 54 anos', (int)$rows['i4554']));
+      array_push($idades, array('De 55 a 64 anos', (int)$rows['i5564']));
+      array_push($idades, array('65 anos ou mais', (int)$rows['i65']));
 
       return $idades;
     }
@@ -43,7 +43,7 @@
 
       $dados = array();
       foreach($query as $row) {
-        array_push($dados, array($row['formacao'], $row['count']));
+        array_push($dados, array($row['formacao'], (int)$row['count']));
       }
 
       return $dados;
@@ -57,7 +57,7 @@
 
       $dados = array();
       foreach($query as $row) {
-        array_push($dados, array($row['estado'], $row['num_atividades']));
+        array_push($dados, array($row['estado'], (int)$row['num_atividades']));
       }
 
       return $dados;
@@ -71,7 +71,7 @@
 
       $dados = array();
       foreach($query as $row) {
-        array_push($dados, array($row['estado'], $row['num_funcionarios']));
+        array_push($dados, array($row['estado'], (int)$row['num_funcionarios']));
       }
 
       return $dados;
@@ -109,7 +109,7 @@
       foreach($filiais as $filial) {
         $data = array();
         foreach($filial as $periodo) {
-          $data[] = $periodo['totalativ'];
+          $data[] = (int)$periodo['totalativ'];
         }
         $series[] = array('name'=>$filial[0]['estado'], 'data'=>$data);
       }
@@ -126,7 +126,7 @@
 
       $dados = array();
       foreach($query as $row) {
-        array_push($dados, array($row['nome'], $row['nivel'], $row['count']));
+        array_push($dados, array($row['nome'], $row['nivel'], (int)$row['count']));
       }
 
       return $dados; 

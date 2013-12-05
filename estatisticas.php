@@ -8,6 +8,8 @@ require_once "StatsHelper.class.php" ;
     <div class="col-md-12">
       <h2>Atividades por Período por Filial</h2>
       <div id="chart6"></div>
+    </div>
+  <div class="row">
     <div class="col-md-6">
       <h2>Quantidade de Atividades por Filial</h2>
       <div id="chart1"></div>
@@ -16,6 +18,8 @@ require_once "StatsHelper.class.php" ;
       <h2>Quantidade de Funcionários por Filial</h2>
       <div id="chart2"></div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
       <h2>Distribuição de Voluntários por Idade</h2>
       <div id="chart3"></div>
@@ -24,10 +28,11 @@ require_once "StatsHelper.class.php" ;
       <h2>Distribuição de Voluntários por Escolaridade</h2>
       <div id="chart4"></div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <h2>Línguas Faladas pelos Voluntários</h2>
       <div id="chart5"></div>
-    </div>
     </div>
   </div>
 </div>

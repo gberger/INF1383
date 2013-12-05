@@ -102,7 +102,7 @@
       $filiais = array_chunk($resultado, 12);
       $periodos = array();
       foreach($filiais[0] as $periodo) {
-        $periodos = $periodo['periodo'];
+        array_push($periodos, $periodo['periodo']);
       }
       $series = array();
 
@@ -114,7 +114,7 @@
         $series[] = array('name'=>$filial[0]['estado'], 'data'=>$data);
       }
 
-      return array('categories'=>$categories, 'series'=>$series);
+      return array('categories'=>$periodos, 'series'=>$series);
 
     }
 

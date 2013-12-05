@@ -5,6 +5,9 @@ require_once "StatsHelper.class.php" ;
 
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <h2>Atividades por Período por Filial</h2>
+      <div id="chart6"></div>
     <div class="col-md-6">
       <h2>Quantidade de Atividades por Filial</h2>
       <div id="chart1"></div>
@@ -24,6 +27,7 @@ require_once "StatsHelper.class.php" ;
     <div class="col-md-12">
       <h2>Línguas Faladas pelos Voluntários</h2>
       <div id="chart5"></div>
+    </div>
     </div>
   </div>
 </div>
@@ -206,6 +210,36 @@ require_once "StatsHelper.class.php" ;
       },
       series: series
     });
+
+    var vals = <?php echo json_encode(StatsHelper::obterAtivPorFilialMes()); ?>;
+
+    $('#chart6').highcharts({
+      title: {
+        text: '',
+      },
+      xAxis: {
+        categories: vals.categories
+      },
+      yAxis: {
+        title: {
+          text: 'Temperature (°C)'
+        },
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+      },
+      series: vals.series
+    });
+
+
   }); //doc.ready
 
 </script>    

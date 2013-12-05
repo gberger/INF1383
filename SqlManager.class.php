@@ -24,6 +24,12 @@
 				$pass = "senha123";
 				$port = "54322";
 			}
+
+			if(URL_PREFIX != '') {
+				$name = 'db60';
+				$user = 'bd1grupo15';
+				$user = 'bd1grupo15./123';
+			}
 			
 			try
 			{

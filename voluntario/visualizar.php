@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="col-md-6"><h1 class="title">Visualizar Voluntários</h1></div>
-	<div class="col-md-6"><h2><a href="/voluntario/cadastrar.php" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Novo Voluntário</a></h2></div>
+	<div class="col-md-6"><h2><a href="<?php echo URL_PREFIX; ?>/voluntario/cadastrar.php" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Novo Voluntário</a></h2></div>
 </div>
 
 <div class="row well">
@@ -63,12 +63,12 @@
 						<td><?php echo $voluntario['tel1']; ?></td>
 						<td><?php echo $voluntario['email']; ?></td>
 						<td>
-							<a href="/voluntario/cadastrar.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
+							<a href="<?php echo URL_PREFIX; ?>/voluntario/cadastrar.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
 						</td>
 						<td>
-							<a href="/voluntario/fluencia.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
+							<a href="<?php echo URL_PREFIX; ?>/voluntario/fluencia.php?cpf=<?php echo $voluntario['cpf']; ?>" class="btn btn-success btn-sm">
 								<span class="glyphicon glyphicon-comment"></span>
 							</a>
 						</td>

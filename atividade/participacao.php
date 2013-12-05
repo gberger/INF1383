@@ -52,7 +52,7 @@
 						<td><?php echo $atividade['horas_trab']; ?></td>
 						<td><?php echo $atividade['descricao']; ?></td>
 						<td>
-							<a style="float: right" href="/atividade/participacao.php?codigo=<?php echo $_GET['codigo'].'&remover='.$atividade['cpf']; ?>" class="btn btn-danger btn-sm">
+							<a style="float: right" href="<?php echo URL_PREFIX; ?>/atividade/participacao.php?codigo=<?php echo $_GET['codigo'].'&remover='.$atividade['cpf']; ?>" class="btn btn-danger btn-sm">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>

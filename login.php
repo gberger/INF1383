@@ -19,10 +19,10 @@
 
     <title>Sistema CadVol</title>
 
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo URL_PREFIX; ?>/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo URL_PREFIX; ?>/assets/css/font-awesome.css" rel="stylesheet">
 
-    <script src="/assets/js/jquery.min.js"></script>
+    <script src="<?php echo URL_PREFIX; ?>/assets/js/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -51,7 +51,7 @@
       <div class="row">
         
         <div class="col-md-4">
-          <img id="logo" src="/assets/img/logocvb.jpg"/>
+          <img id="logo" src="<?php echo URL_PREFIX; ?>/assets/img/logocvb.jpg"/>
         </div>
 
         <div class="col-md-4 col-md-offset-4">

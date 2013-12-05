@@ -60,7 +60,7 @@
 						</td>
 						
 						<td>
-							<a style="float: right" href="/voluntario/fluencia.php?cpf=<?php echo $_GET['cpf'].'&remover='.$idioma['cod_ling']; ?>" class="btn btn-danger btn-sm">
+							<a style="float: right" href="<?php echo URL_PREFIX; ?>/voluntario/fluencia.php?cpf=<?php echo $_GET['cpf'].'&remover='.$idioma['cod_ling']; ?>" class="btn btn-danger btn-sm">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>

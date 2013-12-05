@@ -15,7 +15,7 @@
 
 		public static function redirect( $uri )
 		{
-			header("Location: http://".$_SERVER['HTTP_HOST'].$uri);
+			header("Location: http://".$_SERVER['HTTP_HOST'].URL_PREFIX.$uri);
 			die();
 		}
 

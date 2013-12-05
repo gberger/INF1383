@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="col-md-6"><h1 class="title">Visualizar Atividades</h1></div>
-	<div class="col-md-6"><h2><a href="/atividade/cadastrar.php" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Nova Atividade</a></h2></div>
+	<div class="col-md-6"><h2><a href="<?php echo URL_PREFIX; ?>/atividade/cadastrar.php" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Nova Atividade</a></h2></div>
 </div>
 
 
@@ -64,12 +64,12 @@
 						<td><?php echo $atividade['endereco']; ?></td>
 						<td><?php echo $atividade['totalvol']; ?></td>
 						<td>
-							<a href="/atividade/cadastrar.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
+							<a href="<?php echo URL_PREFIX; ?>/atividade/cadastrar.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
 						</td>
 						<td>
-							<a href="/atividade/participacao.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
+							<a href="<?php echo URL_PREFIX; ?>/atividade/participacao.php?codigo=<?php echo $atividade['codigo']; ?>" class="btn btn-success btn-sm">
 								<span class="fa fa-users"></span>
 							</a>
 						</td>

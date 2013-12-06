@@ -89,7 +89,7 @@ class FormHelper {
 					//	$value = DateTime::createFromFormat('d/m/Y',$value)->format('Y-m-d');
 					if($attr == 'cpf')
 						$value = preg_replace("/[^0-9]*/", "", $value);
-					
+
 					$update .= pg_escape_string($attr)."=".($value != NULL ? ("'".pg_escape_string($value)."'") : "NULL");
 					if(++$i != $total) $update .= ', ';
 				}
@@ -211,6 +211,8 @@ class FormHelper {
 			} else {
 				$sql = "UPDATE funcionario SET password = '".pg_escape_string($_POST['newPassword'])."' ";
 				$sql .= "WHERE cpf = ".$_SESSION['funcionario']['cpf']." AND password = '".pg_escape_string($_POST['oldPassword'])."'";
+				// obs: verifica se a senha continua a mesma carregada na session
+
 				$dbconn = new SqlManager();
 				$command = $dbconn->executeCommand($sql);
 				return ($command == 1);

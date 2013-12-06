@@ -107,6 +107,15 @@ CREATE TABLE participacao (
 CREATE VIEW voluntario AS
 SELECT * FROM pessoa p WHERE NOT EXISTS(
 	SELECT * FROM funcionario f WHERE f.cpf = p.cpf
-)
+);
+
+-- Solucao para erro de insert em view que occore no servidor do LabBio
+CREATE RULE voluntario_ins AS ON INSERT TO voluntario
+DO INSTEAD
+INSERT INTO pessoa VALUES (
+	NEW.cpf,NEW.nome,NEW.data_nasc,NEW.nome_pai,NEW.nome_mae,NEW.endereco,
+	NEW.num_rg,NEW.sigla_emissor,NEW.naturalidade,NEW.est_civil,NEW.sexo,
+	NEW.profissao,NEW.email,NEW.tipo_sangue,NEW.tipo_cnh,NEW.tel1,NEW.tel2,NEW.formacao,NEW.obs
+);
 
 

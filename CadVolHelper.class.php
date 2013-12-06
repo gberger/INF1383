@@ -123,7 +123,7 @@
 			$where = array();
 
 			if(isset($_GET['cpf']) && $_GET['cpf'] !== ''){
-				array_push($where, " cpf like '%".pg_escape_string($_GET['cpf'])."%' ");
+				array_push($where, " CAST(cpf AS TEXT) like '%".pg_escape_string($_GET['cpf'])."%' ");
 			}
 
 			if(isset($_GET['nome']) && $_GET['nome'] !== ''){

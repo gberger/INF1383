@@ -118,4 +118,13 @@ INSERT INTO pessoa VALUES (
 	NEW.profissao,NEW.email,NEW.tipo_sangue,NEW.tipo_cnh,NEW.tel1,NEW.tel2,NEW.formacao,NEW.obs
 );
 
+CREATE RULE voluntario_upd AS ON UPDATE TO voluntario
+DO INSTEAD
+UPDATE pessoa SET
+	cpf=NEW.cpf,nome=NEW.nome,data_nasc=NEW.data_nasc,nome_pai=NEW.nome_pai,nome_mae=NEW.nome_mae,endereco=NEW.endereco,
+	num_rg=NEW.num_rg,sigla_emissor=NEW.sigla_emissor,naturalidade=NEW.naturalidade,est_civil=NEW.est_civil,sexo=NEW.sexo,
+	profissao=NEW.profissao,email=NEW.email,tipo_sangue=NEW.tipo_sangue,tipo_cnh=NEW.tipo_cnh,tel1=NEW.tel1,tel2=NEW.tel2,
+	formacao=NEW.formacao,obs=NEW.obs
+WHERE cpf = NEW.cpf;
+
 

@@ -96,7 +96,7 @@ class FormHelper {
 				if($command == 0)
 					return $_POST['VolunteerForm'];
 				else
-					CadVolHelper::redirect(URL_PREFIX.'/voluntario/visualizar.php?cpf='.$newValues['cpf']);
+					CadVolHelper::redirect('/voluntario/visualizar.php?cpf='.$newValues['cpf']);
 
 			} else {
 				//$voluntario['data_nasc'] = DateTime::createFromFormat('Y-m-d',$voluntario['data_nasc'])->format('d/m/Y');

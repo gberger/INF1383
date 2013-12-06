@@ -57,7 +57,7 @@ CREATE TABLE funcionario
 	CONSTRAINT FK_Funcionario_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE UNIQUE INDEX index_un_username ON funcionario(username);
+CREATE UNIQUE INDEX index_un_username ON funcionario USING btree(username);
 
 
 CREATE TABLE atividade (
@@ -72,7 +72,7 @@ CREATE TABLE atividade (
 	CONSTRAINT FK_Atividade_Cod_Filial FOREIGN KEY(cod_filial) REFERENCES filial(codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
 	CONSTRAINT FK_Atividade_Cod_Responsavel FOREIGN KEY(cpf_responsavel) REFERENCES pessoa(cpf) ON DELETE SET NULL ON UPDATE CASCADE
 );
-CREATE INDEX index_ativ_data ON atividade(data);
+CREATE INDEX index_ativ_data ON atividade USING btree(data);
 
 
 CREATE TABLE lingua (

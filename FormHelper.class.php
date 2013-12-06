@@ -13,7 +13,7 @@ class FormHelper {
 
 			if(isset($_POST['ActivityForm'])) {
 				$newValues = $_POST['ActivityForm'];
-				$update .= "UPDATE atividade SET ";
+				$update = "UPDATE atividade SET ";
 
 				$total = count($newValues);
 				$i = 0;
@@ -80,13 +80,16 @@ class FormHelper {
 
 			if(isset($_POST['VolunteerForm'])) {
 				$newValues = $_POST['VolunteerForm'];
-				$update .= "UPDATE voluntario SET ";
+				$update = "UPDATE voluntario SET ";
 
 				$total = count($newValues);
 				$i = 0;
 				foreach ($newValues as $attr => $value) {
 					//if($attr == 'data_nasc')
 					//	$value = DateTime::createFromFormat('d/m/Y',$value)->format('Y-m-d');
+					if($attr == 'cpf')
+						$value = preg_replace("/[^0-9]*/", "", $value);
+					
 					$update .= pg_escape_string($attr)."=".($value != NULL ? ("'".pg_escape_string($value)."'") : "NULL");
 					if(++$i != $total) $update .= ', ';
 				}
@@ -96,7 +99,7 @@ class FormHelper {
 				if($command == 0)
 					return $_POST['VolunteerForm'];
 				else
-					CadVolHelper::redirect('/voluntario/visualizar.php?cpf='.$newValues['cpf']);
+					CadVolHelper::redirect('/voluntario/visualizar.php?cpf='.preg_replace("/[^0-9]*/", "",$newValues['cpf']));
 
 			} else {
 				//$voluntario['data_nasc'] = DateTime::createFromFormat('Y-m-d',$voluntario['data_nasc'])->format('d/m/Y');
@@ -110,6 +113,8 @@ class FormHelper {
 				foreach ($_POST['VolunteerForm'] as $attr => $value) {
 					//if($attr == 'data_nasc')
 					//	$value = DateTime::createFromFormat('d/m/Y',$value)->format('Y-m-d');
+					if($attr == 'cpf')
+						$value = preg_replace("/[^0-9]*/", "", $value);
 
 					if($value != NULL && $value != '')
 						$insert .= "'".pg_escape_string($value)."'";

@@ -35,7 +35,7 @@ CREATE TABLE pessoa
 	CONSTRAINT FK_Pessoa_Sigla_Emissor FOREIGN KEY(sigla_emissor) REFERENCES emissor_rg(sigla) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
-CREATE INDEX index_email ON pessoa(email);
+CREATE INDEX index_email ON pessoa USING btree(email);
 
 CREATE TABLE filial
 (

@@ -94,7 +94,7 @@
           filialmes.codigo = a.cod_filial
 
         GROUP BY mes, ano, estado
-        ORDER BY estado ASC;
+        ORDER BY estado, ano, mes ASC;
       ";
       $query = $dbconn->executeRead($sql);
       $resultado = $query->fetchAll();

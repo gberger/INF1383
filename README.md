@@ -1,4 +1,4 @@
-INF1383
+INF1383 - Databases I
 =======
 
-Projects of the Databases I course at PUC-Rio.
+Project of the Databases I course at PUC-Rio.
